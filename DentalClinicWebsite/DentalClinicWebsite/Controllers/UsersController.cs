@@ -6,162 +6,135 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DentalClinicWebsite.Models;
+using DentalClinicWebsite.Services.Interfaces;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DentalClinicWebsite.Controllers
 {
-    public class UsersController : Controller
+    public class UserController : Controller
     {
-        private readonly DentalClinicContext _context;
+        private readonly IUserService _userService;
 
-        public UsersController(DentalClinicContext context)
+        public UserController(IUserService userService)
         {
-            _context = context;
+            _userService = userService;
         }
 
-        // GET: Users
-        public async Task<IActionResult> Index()
+        [HttpGet]
+        public IActionResult Register()
         {
-            var dentalClinicContext = _context.Users.Include(u => u.Role);
-            return View(await dentalClinicContext.ToListAsync());
-        }
-
-        // GET: Users/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Users == null)
-            {
-                return NotFound();
-            }
-
-            var user = await _context.Users
-                .Include(u => u.Role)
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            return View(user);
-        }
-
-        // GET: Users/Create
-        public IActionResult Create()
-        {
-            ViewData["RoleId"] = new SelectList(_context.Roles, "ID", "Name");
             return View();
         }
 
-        // POST: Users/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,FirstName,LastName,Email,PhoneNumber,Address,RoleId")] User user)
+        public async Task<IActionResult> Register(User user)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _context.Add(user);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return View(user);
             }
-            ViewData["RoleId"] = new SelectList(_context.Roles, "ID", "ID", user.RoleId);
-            return View(user);
+
+            // Create new user
+            var result = await _userService.CreateUserAsync(user);
+
+            if (result == false)
+            {
+                ModelState.AddModelError(string.Empty, "A apărut o eroare la înregistrare.");
+                return View(user);
+            }
+
+            // Redirect to login page
+            return RedirectToAction("", "Login");
         }
 
-        // GET: Users/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.Users == null)
-            {
-                return NotFound();
-            }
 
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-            ViewData["RoleId"] = new SelectList(_context.Roles, "ID", "Name", user.RoleId);
-            return View(user);
+        [HttpGet]
+        public IActionResult Login()
+        {
+
+            return View();
         }
 
-        // POST: Users/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,FirstName,LastName,Email,PhoneNumber,Address,RoleId")] User user)
+        public async Task<IActionResult> Login(User model, string returnUrl)
         {
-            if (id != user.ID)
-            {
-                return NotFound();
-            }
+            // Authenticate user
+            var user = await _userService.Authenticate(model.Email, model.PasswordHash);
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(user);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!UserExists(user.ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["RoleId"] = new SelectList(_context.Roles, "ID", "Name", user.RoleId);
-            return View(user);
-        }
-
-        // GET: Users/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.Users == null)
-            {
-                return NotFound();
-            }
-
-            var user = await _context.Users
-                .Include(u => u.Role)
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            return View(user);
-        }
-
-        // POST: Users/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.Users == null)
-            {
-                return Problem("Entity set 'DentalClinicContext.Users'  is null.");
-            }
-            var user = await _context.Users.FindAsync(id);
             if (user != null)
             {
-                _context.Users.Remove(user);
+                // Create claims for user
+                var claims = new List<Claim>
+    {
+        new Claim(ClaimTypes.NameIdentifier, user.ID.ToString()),
+        new Claim(ClaimTypes.Name, user.Email)
+    };
+
+                // Create identity for user
+                var claimsIdentity = new ClaimsIdentity(
+                    claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                // Create principal for user
+                var authProperties = new AuthenticationProperties();
+                var principal = new ClaimsPrincipal(claimsIdentity);
+
+                // Sign in user
+                await HttpContext.SignInAsync(
+                    CookieAuthenticationDefaults.AuthenticationScheme,
+                    principal, authProperties);
+
+                return RedirectToAction("", "Account");
             }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            else
+            {
+                ModelState.AddModelError("", "Email-ul sau parola sunt incorecte.");
+            }
+
+            return View(model);
         }
 
-        private bool UserExists(int id)
+        [HttpPost]
+        public async Task<IActionResult> Logout()
         {
-          return _context.Users.Any(e => e.ID == id);
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            return RedirectToAction("", "Login");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateProfile(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                var currentUser = await _userService.GetByIdAsync(user.ID);
+                if (currentUser == null)
+                {
+                    return NotFound();
+                }
+
+                currentUser.FirstName = user.FirstName;
+                currentUser.LastName = user.LastName;
+                currentUser.Email = user.Email;
+                currentUser.PasswordHash = user.PasswordHash;
+                currentUser.PhoneNumber = user.PhoneNumber;
+                currentUser.Address = user.Address;
+
+                await _userService.UpdateUserAsync(currentUser);
+
+                ViewBag.SuccessMessage = "Informațiile personale au fost actualizate cu succes!";
+            }
+            else
+            {
+                ViewBag.ErrorMessage = "A apărut o eroare la actualizarea informațiilor personale. Vă rugăm să încercați din nou.";
+            }
+
+            return View(user);
         }
     }
+
 }
+

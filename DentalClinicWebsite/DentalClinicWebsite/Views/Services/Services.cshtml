@@ -1,0 +1,103 @@
+﻿@inject IHttpContextAccessor HttpContextAccessor
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicii - SmileDent</title>
+    <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="Home">Home</a></li>
+                <li><a href="Services" class="active">Servicii</a></li>
+                <li><a href="Team">Echipa</a></li>
+                <li><a href="Prices">Tarife</a></li>
+                <li><a href="Schedule">Programeaza-te</a></li>
+                <li><a href="Contact">Contact</a></li>
+                @{
+                    if (!HttpContextAccessor.HttpContext.User.Identity.IsAuthenticated) //verificam daca utilizatorul este autentificat
+                    {
+                        <li><a href="Register">Inregistrare</a></li>
+                        <li><a href="Login">Autentificare</a></li>
+                    }
+                    else
+                    {
+                    //daca utilizatorul este autentificat, afisam optiunea de deconectare
+                        <li><form method="post" asp-controller="User" asp-action="Logout"><button type="submit" class="logout">Logout</button></form></li>
+                    }
+                }
+            </ul>
+        </nav>
+    </header>
+
+    <section class="servicii-section">
+        <h1>Servicii oferite de SmileDent</h1>
+        <p>Mai jos veti gasi fiecare sectiunie din servicile pe care le oferim.</p>
+    </section>
+
+    <section class="implant-dentar-section">
+        <h2>Implant Dentar</h2>
+        <p>
+            Ai nevoie de un implant dentar?
+            Daca da, atunci trebuie sa citesti acest articol!
+            Stim ca serviciile stomatologice au preturi nu tocmai prietenoase cu portofelul, in special cele legate de implant dentar. Care este pretul corect atunci cand vorbim de implant dentar? Se poate bine si ieftin? Ce inseamna implant dentar ieftin?
+            Ei bine, in acest articol vei afla tot ce trebuie sa stii in legatura cu implanturile dentare: din ce este format un implant dentar, de cate implanturi dentare este nevoie atunci cand nu mai ai niciun dinte, cat te costa sa-ti pui un implant dentar, cum te ajutam noi in aceasta privinta si multe altele.
+        </p>
+    </section>
+
+    <nav class="nav_links">
+        <ul>
+            <li><a href="implantdentar.html">Implant Dentar</a></li>
+        </ul>
+    </nav>
+
+
+    <section class="estetica-dentara-section">
+        <h1>Fatete dentare perfecte</h1>
+        <p>Daca v-ati gandit sa va schimbati zambetul si ati considerat fatetele dentare ca o optiune, atunci sunteti pe calea cea buna. In acest articol, veti descoperi tot ce trebuie sa stiti despre fatete dentare, aceasta procedura de estetică dentară, care poate sa va ajute sa obtineti un zambet perfect.</p>
+    </section>
+
+    <nav class="nav_links">
+        <ul>
+            <li><a href="esteticadentara.html">Estetica Dentara</a></li>
+        </ul>
+    </nav>
+
+    <section class="aparat-dentar-section">
+        <h1>Ai nevoie de un Aparat Dentar?</h1>
+        <p>
+            Dinti strambi si inestetici?
+            Noi te putem ajuta! Cu ajutorul unui aparat dentar putem rezolva majoritatea problemelor de pozitionare gresita a dintilor. Folosirea aparatului dentar este alegerea ideala atunci cand vorbim si de muscaturi incorecte care duc la dureri articulare sau cand vorbim de reabilitarea zambetului pentru a obtine un zambet perfect.
+        </p>
+    </section>
+
+    <nav class="nav_links">
+        <ul>
+            <li><a href="aparatdentar.html">Aparat Dentar</a></li>
+        </ul>
+    </nav>
+
+    <section class="endodontie-section">
+        <h1>Ai nevoie de un tratament de canal?</h1>
+        <p>Daca da, atunci ai ajuns unde trebuie.In acest articol vei gasi probabil raspuns la toate intrebarile legate de tratamentul de canal. De la cum trebuie procedat in cazul in care ai nevoie de un tratament al canalelor radiculare, la modul corect si incorect de realizare si nu in ultimul rand la costul unui tratament de canal. De aici vei pleca cu o mai buna intelegere a acestui procedeu utilizat des in stomatologie, dar si cu cateva informatii referitoare la alternativele acestui proces.</p>
+    </section>
+
+    <nav class="nav_links">
+        <ul>
+            <li><a href="edondontie.html">Edondontie</a></li>
+        </ul>
+    </nav>
+
+    <footer>
+        <div class="footer-content">
+            <h4>SmileDent</h4>
+            <p>© 2023 SmileDent. Toate drepturile rezervate.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

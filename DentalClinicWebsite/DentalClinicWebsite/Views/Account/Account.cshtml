@@ -1,0 +1,65 @@
+﻿@model User
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmileDent - Contul Meu</title>
+    <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="Home">Home</a></li>
+                <li><a href="Services">Servicii</a></li>
+                <li><a href="Team">Echipa</a></li>
+                <li><a href="Prices">Tarife</a></li>
+                <li><a href="Schedule">Programeaza-te</a></li>
+                <li><a href="Contact">Contact</a></li>
+                <li><a href="Account" class="active">Contul Meu</a></li>
+                <li><form method="post" asp-controller="User" asp-action="Logout"><button type="submit" class="logout">Logout</button></form></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Contul Meu</h1>
+    <section id="profil" class="login">
+        <h2>Modificare informații personale</h2>
+        @if (ViewBag.Message != null)
+        {
+            <p>@ViewBag.Message</p>
+        }
+        <form id="updateForm" asp-controller="User" asp-action="UpdateProfile" method="post">
+            <input type="hidden" name="UserId" value="ID" />
+            <label for="firstName">Prenume:</label>
+            <input type="text" id="firstName" name="FirstName" asp-for="FirstName" required>
+
+            <label for="lastName">Nume:</label>
+            <input type="text" id="lastName" name="LastName" asp-for="LastName" required>
+
+            <label for="email">Adresa de e-mail:</label>
+            <input type="email" id="email" name="Email" asp-for="Email" required>
+
+            <label for="PasswordHash">Parola:</label>
+            <input type="password" id="password" name="PasswordHash" asp-for="PasswordHash" required>
+
+            <label for="phoneNumber">Numar de telefon:</label>
+            <input type="text" id="phoneNumber" name="PhoneNumber" asp-for="PhoneNumber" required>
+
+            <label for="address">Adresa:</label>
+            <input type="text" id="address" name="Address" asp-for="Address" required>
+
+            <button type="submit">Salvare modificări</button>
+        </form>
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <p>@ViewBag.ErrorMessage</p>
+        }
+        @if (ViewBag.SuccessMessage != null)
+        {
+            <p>@ViewBag.SuccessMessage</p>
+        }
+    </section>
+</body>
+</html>

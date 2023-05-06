@@ -9,6 +9,7 @@
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
         public int RoleId { get; set; }
+        public string PasswordHash { get; set; }
 
         public virtual Role Role { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }

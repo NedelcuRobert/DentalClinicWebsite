@@ -1,0 +1,82 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - SmileDent</title>
+    <link rel="stylesheet" href="css/site.css">
+</head>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="Home">Home</a></li>
+                <li><a href="Services">Servicii</a></li>
+                <li><a href="Team">Echipa</a></li>
+                <li><a href="Prices">Tarife</a></li>
+                <li><a href="Schedule">Programeaza-te</a></li>
+                <li><a href="Contact" class="active">Contact</a></li>
+            @{
+                if (!HttpContextAccessor.HttpContext.User.Identity.IsAuthenticated) //verificam daca utilizatorul este autentificat
+                {
+                    <li><a href="Register">Inregistrare</a></li>
+                    <li><a href="Login">Autentificare</a></li>
+                }
+                else
+                {
+                //daca utilizatorul este autentificat, afisam optiunea de deconectare
+                    <li><form method="post" asp-controller="User" asp-action="Logout"><button type="submit" class="logout">Logout</button></form></li>
+                }
+            }
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="content">
+        <h1>Contact</h1>
+        <p>Pentru a ne contacta, vă rugăm să folosiți informațiile de mai jos:</p>
+        <div class="contact-info">
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Strada Calea Bucuresti nr. 1, Craiova</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-phone"></i>
+                <span>0777 123 456</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <span>contact@smiledent.ro</span>
+            </div>
+        </div>
+    <form asp-controller="Contact" asp-action="SendMessage" method="post">
+            <h2>Trimiteți-ne un mesaj</h2>
+            <div class="form-group">
+                <label for="name">Nume complet</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Adresa de email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="subject">Subiect</label>
+                <input type="text" id="subject" name="subject" required>
+        </div>
+        <div class="form-group">
+            <label for="message">Mesaj</label>
+            <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit">Trimiteți</button>
+    </form>
+</div>
+
+<footer>
+    <p>&copy; 2023 SmileDent. Toate drepturile rezervate.</p>
+</footer>

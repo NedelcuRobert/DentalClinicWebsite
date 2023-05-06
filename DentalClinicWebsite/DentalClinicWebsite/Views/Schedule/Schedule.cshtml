@@ -1,0 +1,64 @@
+﻿@inject IHttpContextAccessor HttpContextAccessor
+@model DentistServices
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programeaza-te</title>
+    <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="Home">Acasa</a></li>
+                <li><a href="Services">Servicii</a></li>
+                <li><a href="Team">Echipa</a></li>
+                <li><a href="Prices">Tarife</a></li>
+                <li><a href="Schedule" class="active">Programeaza-te</a></li>
+                <li><a href="Contact">Contact</a></li>
+                @{
+                    if (!HttpContextAccessor.HttpContext.User.Identity.IsAuthenticated) //verificam daca utilizatorul este autentificat
+                    {
+                        <li><a href="Register">Inregistrare</a></li>
+                        <li><a href="Login">Autentificare</a></li>
+                    }
+                    else
+                    {
+                    //daca utilizatorul este autentificat, afisam optiunea de deconectare
+                        <li><form method="post" asp-controller="User" asp-action="Logout"><button type="submit" class="logout">Logout</button></form></li>
+                    }
+                }
+
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <form id="programare-form" method="post" asp-controller="Schedule" asp-action="Schedule">
+            <label>Selectează serviciul:</label>
+            <select name="serviciu">
+                <option value="">Selectează serviciul</option>
+                @foreach (var serviciu in Model.Services)
+                {
+                    <option value="@serviciu.ID">@serviciu.Name</option>
+                }
+            </select>
+
+            <label>Selectează medicul:</label>
+            <select name="medic">
+                <option value="">Selectează medicul</option>
+                @foreach (var dentist in Model.Dentists)
+                {
+                    <option value="@dentist.ID">@dentist.FirstName @dentist.LastName</option>
+                }
+            </select>
+            <label>Data:</label>
+            <input type="date" name="data" />
+            <label>Ora:</label>
+            <input type="time" name="ora" />
+            <button type="submit">Programează-te</button>
+        </form>
+    </main>
+</body>
+</html>

@@ -1,0 +1,82 @@
+﻿@inject IHttpContextAccessor HttpContextAccessor
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tarife - SmileDent</title>
+    <link rel="stylesheet" type="text/css" href="css/site.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="Home">Home</a></li>
+                <li><a href="Services">Servicii</a></li>
+                <li><a href="Team">Echipa</a></li>
+                <li><a href="Prices" class="active"> Tarife</a></li>
+                <li><a href="Schedule">Programeaza-te</a></li>
+                <li><a href="Contact">Contact</a></li>
+                @{
+                    if (!HttpContextAccessor.HttpContext.User.Identity.IsAuthenticated) //verificam daca utilizatorul este autentificat
+                    {
+                        <li><a href="Register">Inregistrare</a></li>
+                        <li><a href="Login">Autentificare</a></li>
+                    }
+                    else
+                    {
+                    //daca utilizatorul este autentificat, afisam optiunea de deconectare
+                        <li><form method="post" asp-controller="User" asp-action="Logout"><button type="submit" class="logout">Logout</button></form></li>
+                    }
+                }
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Tarife</h1>
+        <p>
+            Fundamentul activității SmileDent este sănătatea dentară a pacientului pe termen lung.
+            Și pentru că zâmbetul reprezintă o investiție pentru toată viața este important ca alegerea făcută să fie cea mai potrivită pentru tine.
+        </p>
+        <section class="treatments-section">
+            <h2>Tratamente disponibile la SmileDent</h2>
+            <table>
+                <tr>
+                    <th>Numele Tratamentului</th>
+                    <th>Descriere</th>
+                    <th>Pret</th>
+                </tr>
+                <tr>
+                    <td>Albirea dentara</td>
+                    <td>O metoda sigura si eficienta de a-ti lumina dintii si de a-ti imbunatati zambetul.</td>
+                    <td>600 RON</td>
+                </tr>
+                <tr>
+                    <td>Extractia dentara</td>
+                    <td>Procedura prin care se indeparteaza un dinte afectat sau deteriorat.</td>
+                    <td>150 RON</td>
+                </tr>
+                <tr>
+                    <td>Implant dentar</td>
+                    <td>Procedura prin care se inlocuieste un dinte pierdut cu un implant artificial si o coroana dentara.</td>
+                    <td>3500 RON</td>
+                </tr>
+                <tr>
+                    <td>Plomba dentara</td>
+                    <td>Procedura prin care se umple o cavitate din dinte cu un material special pentru a preveni deteriorarea ulterioara.</td>
+                    <td>250 RON</td>
+                </tr>
+                <tr>
+                    <td>Proteza dentara</td>
+                    <td>Dispozitiv medical care inlocuieste dintii lipsa sau deteriorati si restabileste functia de mestecare si vorbire.</td>
+                    <td>1500 RON</td>
+                </tr>
+            </table>
+        </section>
+
+
+
+    </main>
+    <footer>
+        <p>© 2023 SmileDent. Toate drepturile rezervate.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,73 @@
+﻿@inject IHttpContextAccessor HttpContextAccessor
+<!DOCTYPE html>
+<head>
+	<title>SmileDent | Acasa</title>
+	<link rel="stylesheet" type="text/css" href="css/site.css">
+</head>
+<header>
+	<div class="logo-text">
+		<img src="img/logo1.png" alt="Logo SmileDent" style="display: inline-block;" class="logo" />
+		<h1>Bine ati venit la SmileDent</h1>
+		<p>Imbunatatim zambetul dumneavoastra</p>
+	</div>
+	<nav>
+		<ul>
+			<li><a href="Home" class="active">Home</a></li>
+			<li><a href="Services">Servicii</a></li>
+			<li><a href="Team">Echipa</a></li>
+			<li><a href="Prices">Tarife</a></li>
+			<li><a href="Schedule">Programeaza-te</a></li>
+			<li><a href="Contact">Contact</a></li>
+			@{
+				if (!HttpContextAccessor.HttpContext.User.Identity.IsAuthenticated) //verificam daca utilizatorul este autentificat
+				{
+					<li><a href="Register">Inregistrare</a></li>
+					<li><a href="Login">Autentificare</a></li>
+				}
+				else
+				{
+					//daca utilizatorul este autentificat, afisam optiunea de deconectare
+					<li><form method="post" asp-controller="User" asp-action="Logout"><button type="submit" class="logout">Logout</button></form></li>
+				}
+			}
+		</ul>
+	</nav>
+</header>
+	<section class="about-section">
+		<h2>Clinica stomatologica la standarde Internationale</h2>
+		<p>
+			SmileDent este o clinica moderna si dotata cu cele mai noi tehnologii in domeniul stomatologic. Suntem dedicati imbunatatirii si mentinerii starii de sanatate orale a pacientilor nostri.
+			Medicina dentara asa cum toti ne dorim. Viziunea noastra „O abordare total diferita.” Primesti toate informatiile necesare inainte de tratament, beneficiezi de ofertele noastre, platesti in rate.
+			2 clinici dentare, 7 cabinete stomatologice. Fiecare cabinet stomatologic dotat la standarde internationale. Beneficiezi de tot sprijinul si priceperea noastra acumulata in peste 12 ani.
+		</p>
+	</section>
+	<section class="guarantee-section">
+		<h2>Garantie si Asigurare</h2>
+		<p>Acum esti fara griji! SmileDent ofera garantie stomatologica scrisa pentru lucrarile efectuate in clinica stomatologica.</p>
+	</section>
+	<section class="experience-section">
+		<h2>Experienta</h2>
+		<p>Echipa noastra de medici are o vasta experienta in domeniul stomatologic si este pregatita sa ofere cele mai bune servicii pentru dumneavoastra.</p>
+	</section>
+	<section class="safety-section">
+		<h2>Siguranta</h2>
+		<p>La SmileDent, respectam cele mai inalte standarde de siguranta si igiena pentru a va asigura ca sunteti in siguranta in timpul fiecarei vizite la clinica noastra.</p>
+	</section>
+	<section class="technology-section">
+		<h2>Tehnologie</h2>
+		<p>Investim constant in cele mai noi tehnologii si echipamente pentru a va oferi cele mai avansate si precise tratamente stomatologice.</p>
+	</section>
+	<section class="testimonials-section">
+		<h2>Testimoniale</h2>
+		<p>"Am fost foarte multumit de serviciile oferite de SmileDent. Personalul a fost foarte amabil si profesionist, iar serviciile au fost de cea mai buna calitate. Recomand cu incredere aceasta clinica!"</p>
+		<p class="testimonial-author">- Ion Popescu</p>
+	</section>
+	<section class="location-section">
+		<h2>Unde ne gasesti ?</h2>
+		<p>
+			Cauti un dentist? Pe noi ne gasesti in Craiova, Strada Calea Bucuresti Nr 1, fie in clinica stomatologica din Lapus, fie in clinica dentara din 1 Mai.  Cele 2 clinici stomatologice sunt impartite astfel:
+			4 cabinete stomatologice in Clinica Stomatologica din Lapus | Craiova,  Bd. Schitu Magureanu, Nr. 7
+			2 cabinete stomatologice in Clinica Stomatologica din 1 Mai | Craiova,  Bd. Banul Manta, Nr. 39
+			Cabinetele stomatologice sunt dotate cu tehnologie de ultima ora cu ajutorul careia putem obtine tratamente predictibile si de calitate.
+		</p>
+	</section>

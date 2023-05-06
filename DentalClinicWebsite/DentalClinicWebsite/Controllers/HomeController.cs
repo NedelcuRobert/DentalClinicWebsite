@@ -1,19 +1,20 @@
 ﻿using DentalClinicWebsite.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-public class HomeController : Controller
+namespace DentalClinicWebsite.Controllers
 {
-        private readonly DentalClinicContext _dbContext;
-
+    public class HomeController : Controller
+    {
         public HomeController()
         {
         }
 
-        public ActionResult Index()
+        public IActionResult Home()
         {
 
-            // Pass the list of appointments to the view
             return View();
         }
 
+    }
 }

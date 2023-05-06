@@ -9,77 +9,109 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = DentalClinicWebsite
 build_property.RootNamespace = DentalClinicWebsite
-build_property.ProjectDir = D:\FACULTATE\PROIECTE\CabinetStomatologic\vs\DentalClinicWebsite\DentalClinicWebsite\
+build_property.ProjectDir = D:\FACULTATE\PROIECTE\DentalClinicWebsite\DentalClinicWebsite\DentalClinicWebsite\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\FACULTATE\PROIECTE\CabinetStomatologic\vs\DentalClinicWebsite\DentalClinicWebsite
+build_property.MSBuildProjectDirectory = D:\FACULTATE\PROIECTE\DentalClinicWebsite\DentalClinicWebsite\DentalClinicWebsite
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/FACULTATE/PROIECTE/CabinetStomatologic/vs/DentalClinicWebsite/DentalClinicWebsite/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Account/Account.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBY2NvdW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FACULTATE/PROIECTE/CabinetStomatologic/vs/DentalClinicWebsite/DentalClinicWebsite/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Contact/Contact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFxDb250YWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FACULTATE/PROIECTE/CabinetStomatologic/vs/DentalClinicWebsite/DentalClinicWebsite/Views/Roles/Create.cshtml]
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Home/Home.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIb21lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Login/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Prices/Prices.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpY2VzXFByaWNlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Register/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVnaXN0ZXJcUmVnaXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Roles/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FACULTATE/PROIECTE/CabinetStomatologic/vs/DentalClinicWebsite/DentalClinicWebsite/Views/Roles/Delete.cshtml]
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Roles/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FACULTATE/PROIECTE/CabinetStomatologic/vs/DentalClinicWebsite/DentalClinicWebsite/Views/Roles/Details.cshtml]
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Roles/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FACULTATE/PROIECTE/CabinetStomatologic/vs/DentalClinicWebsite/DentalClinicWebsite/Views/Roles/Edit.cshtml]
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Roles/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FACULTATE/PROIECTE/CabinetStomatologic/vs/DentalClinicWebsite/DentalClinicWebsite/Views/Roles/Index.cshtml]
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Roles/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FACULTATE/PROIECTE/CabinetStomatologic/vs/DentalClinicWebsite/DentalClinicWebsite/Views/Shared/Error.cshtml]
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Schedule/Schedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NoZWR1bGVcU2NoZWR1bGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Services/Services.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZXNcU2VydmljZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FACULTATE/PROIECTE/CabinetStomatologic/vs/DentalClinicWebsite/DentalClinicWebsite/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FACULTATE/PROIECTE/CabinetStomatologic/vs/DentalClinicWebsite/DentalClinicWebsite/Views/Users/Create.cshtml]
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Team/Team.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhbVxUZWFtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Users/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FACULTATE/PROIECTE/CabinetStomatologic/vs/DentalClinicWebsite/DentalClinicWebsite/Views/Users/Delete.cshtml]
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Users/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FACULTATE/PROIECTE/CabinetStomatologic/vs/DentalClinicWebsite/DentalClinicWebsite/Views/Users/Details.cshtml]
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Users/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FACULTATE/PROIECTE/CabinetStomatologic/vs/DentalClinicWebsite/DentalClinicWebsite/Views/Users/Edit.cshtml]
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Users/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FACULTATE/PROIECTE/CabinetStomatologic/vs/DentalClinicWebsite/DentalClinicWebsite/Views/Users/Index.cshtml]
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Users/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FACULTATE/PROIECTE/CabinetStomatologic/vs/DentalClinicWebsite/DentalClinicWebsite/Views/_ViewImports.cshtml]
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FACULTATE/PROIECTE/CabinetStomatologic/vs/DentalClinicWebsite/DentalClinicWebsite/Views/_ViewStart.cshtml]
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FACULTATE/PROIECTE/CabinetStomatologic/vs/DentalClinicWebsite/DentalClinicWebsite/Views/Shared/_Layout.cshtml]
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-o2q3kkbzl2
