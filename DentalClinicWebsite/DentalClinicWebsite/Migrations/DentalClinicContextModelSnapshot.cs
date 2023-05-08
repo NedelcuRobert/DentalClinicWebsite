@@ -36,17 +36,14 @@ namespace DentalClinicWebsite.Migrations
                     b.Property<int>("ServiceId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId1")
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("ID");
 
                     b.HasIndex("ServiceId");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Appointments");
                 });
@@ -120,15 +117,12 @@ namespace DentalClinicWebsite.Migrations
                     b.Property<int>("Rating")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId1")
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Reviews");
                 });
@@ -291,26 +285,18 @@ namespace DentalClinicWebsite.Migrations
 
             modelBuilder.Entity("DentalClinicWebsite.Models.UserSpecialization", b =>
                 {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
                     b.Property<int>("SpecializationId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId1")
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("ID");
+                    b.Property<int>("ID")
+                        .HasColumnType("int");
 
-                    b.HasIndex("SpecializationId");
+                    b.HasKey("SpecializationId", "UserId");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("UserSpecializations");
                 });
@@ -457,12 +443,13 @@ namespace DentalClinicWebsite.Migrations
                     b.HasOne("DentalClinicWebsite.Models.Service", "Service")
                         .WithMany("Appointments")
                         .HasForeignKey("ServiceId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.ClientNoAction)
                         .IsRequired();
 
                     b.HasOne("DentalClinicWebsite.Models.User", "User")
                         .WithMany("Appointments")
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.ClientNoAction);
 
                     b.Navigation("Service");
 
@@ -474,7 +461,7 @@ namespace DentalClinicWebsite.Migrations
                     b.HasOne("DentalClinicWebsite.Models.Consultation", "Consultation")
                         .WithOne("Billing")
                         .HasForeignKey("DentalClinicWebsite.Models.Billing", "ConsultationId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.ClientNoAction)
                         .IsRequired();
 
                     b.Navigation("Consultation");
@@ -485,7 +472,7 @@ namespace DentalClinicWebsite.Migrations
                     b.HasOne("DentalClinicWebsite.Models.Appointment", "Appointment")
                         .WithOne("Consultation")
                         .HasForeignKey("DentalClinicWebsite.Models.Consultation", "AppointmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.ClientNoAction)
                         .IsRequired();
 
                     b.HasOne("DentalClinicWebsite.Models.Treatment", "Treatment")
@@ -503,7 +490,8 @@ namespace DentalClinicWebsite.Migrations
                 {
                     b.HasOne("DentalClinicWebsite.Models.User", "User")
                         .WithMany("Reviews")
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.ClientNoAction);
 
                     b.Navigation("User");
                 });
@@ -513,7 +501,7 @@ namespace DentalClinicWebsite.Migrations
                     b.HasOne("DentalClinicWebsite.Models.Specialization", "Specialization")
                         .WithMany("Services")
                         .HasForeignKey("SpecializationId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.ClientNoAction)
                         .IsRequired();
 
                     b.Navigation("Specialization");
@@ -524,7 +512,7 @@ namespace DentalClinicWebsite.Migrations
                     b.HasOne("DentalClinicWebsite.Models.Service", "Service")
                         .WithMany("Treatments")
                         .HasForeignKey("ServiceId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.ClientNoAction)
                         .IsRequired();
 
                     b.Navigation("Service");
@@ -535,13 +523,13 @@ namespace DentalClinicWebsite.Migrations
                     b.HasOne("DentalClinicWebsite.Models.Consultation", "Consultation")
                         .WithMany("TreatmentConsultations")
                         .HasForeignKey("ConsultationId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.ClientNoAction)
                         .IsRequired();
 
                     b.HasOne("DentalClinicWebsite.Models.Treatment", "Treatment")
                         .WithMany("TreatmentConsultations")
                         .HasForeignKey("TreatmentId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.ClientNoAction)
                         .IsRequired();
 
                     b.Navigation("Consultation");
@@ -554,12 +542,14 @@ namespace DentalClinicWebsite.Migrations
                     b.HasOne("DentalClinicWebsite.Models.Specialization", "Specialization")
                         .WithMany("UserSpecializations")
                         .HasForeignKey("SpecializationId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.ClientNoAction)
                         .IsRequired();
 
                     b.HasOne("DentalClinicWebsite.Models.User", "User")
-                        .WithMany("Specializations")
-                        .HasForeignKey("UserId1");
+                        .WithMany("UserSpecializations")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.ClientNoAction)
+                        .IsRequired();
 
                     b.Navigation("Specialization");
 
@@ -654,7 +644,7 @@ namespace DentalClinicWebsite.Migrations
 
                     b.Navigation("Reviews");
 
-                    b.Navigation("Specializations");
+                    b.Navigation("UserSpecializations");
                 });
 #pragma warning restore 612, 618
         }

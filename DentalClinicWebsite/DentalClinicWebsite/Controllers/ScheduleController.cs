@@ -10,8 +10,16 @@ namespace DentalClinicWebsite.Controllers
 {
     public class ScheduleController : Controller
     {
-        private readonly IServiceService _serviceService;
-        private readonly IAppointmentService _appointmentService;
+        public ScheduleController()
+        {
+        }
+
+        public ActionResult Schedule()
+        {
+
+            // Pass the list of appointments to the view
+            return View();
+        }
 
 
     }

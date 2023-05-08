@@ -1,4 +1,6 @@
-﻿@inject IHttpContextAccessor HttpContextAccessor
+﻿@{
+    Layout = "_Layout";
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,30 +8,6 @@
     <link rel="stylesheet" type="text/css" href="css/site.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="Home">Home</a></li>
-                <li><a href="Services">Servicii</a></li>
-                <li><a href="Team">Echipa</a></li>
-                <li><a href="Prices" class="active"> Tarife</a></li>
-                <li><a href="Schedule">Programeaza-te</a></li>
-                <li><a href="Contact">Contact</a></li>
-                @{
-                    if (!HttpContextAccessor.HttpContext.User.Identity.IsAuthenticated) //verificam daca utilizatorul este autentificat
-                    {
-                        <li><a href="Register">Inregistrare</a></li>
-                        <li><a href="Login">Autentificare</a></li>
-                    }
-                    else
-                    {
-                    //daca utilizatorul este autentificat, afisam optiunea de deconectare
-                        <li><form method="post" asp-controller="User" asp-action="Logout"><button type="submit" class="logout">Logout</button></form></li>
-                    }
-                }
-            </ul>
-        </nav>
-    </header>
     <main>
         <h1>Tarife</h1>
         <p>

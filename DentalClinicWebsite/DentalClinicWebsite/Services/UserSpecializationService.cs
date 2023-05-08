@@ -23,7 +23,7 @@ namespace DentalClinicWebsite.Services
             return await _userSpecializationRepository.GetByIdAsync(id);
         }
 
-        public async Task<List<UserSpecialization>> GetByUserIdAsync(int userId)
+        public async Task<List<UserSpecialization>> GetByUserIdAsync(string userId)
         {
             return await _userSpecializationRepository.GetByUserIdAsync(userId);
         }

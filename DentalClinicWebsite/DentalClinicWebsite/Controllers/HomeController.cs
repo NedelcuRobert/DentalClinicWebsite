@@ -18,7 +18,7 @@ namespace DentalClinicWebsite.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Contact()
         {
             return View();

@@ -26,7 +26,7 @@ namespace DentalClinicWebsite.Repository
             return await _dbContext.UserSpecializations.FindAsync(id);
         }
 
-        public async Task<List<UserSpecialization>> GetByUserIdAsync(int userId)
+        public async Task<List<UserSpecialization>> GetByUserIdAsync(string userId)
         {
             return await _dbContext.UserSpecializations
                 .Include(us => us.User)

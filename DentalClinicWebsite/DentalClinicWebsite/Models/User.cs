@@ -9,6 +9,6 @@ namespace DentalClinicWebsite.Models
         public string Address { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }
         public virtual ICollection<Appointment> Appointments { get; set; }
-        public virtual ICollection<UserSpecialization> Specializations { get; set; }
+        public virtual ICollection<UserSpecialization> UserSpecializations { get; set; }
     }
 }

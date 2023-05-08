@@ -1,38 +1,11 @@
-﻿@inject IHttpContextAccessor HttpContextAccessor
+﻿@{
+	Layout = "_Layout";
+}
 <!DOCTYPE html>
 <head>
 	<title>SmileDent | Acasa</title>
 	<link rel="stylesheet" type="text/css" href="css/site.css">
 </head>
-<header>
-	<div class="logo-text">
-		<img src="img/logo1.png" alt="Logo SmileDent" style="display: inline-block;" class="logo" />
-		<h1>Bine ati venit la SmileDent</h1>
-		<p>Imbunatatim zambetul dumneavoastra</p>
-	</div>
-	<nav>
-		<ul>
-			<li><a href="Home" class="active">Home</a></li>
-			<li><a href="Services">Servicii</a></li>
-			<li><a href="Team">Echipa</a></li>
-			<li><a href="Prices">Tarife</a></li>
-			<li><a href="Schedule">Programeaza-te</a></li>
-			<li><a href="Contact">Contact</a></li>
-			@{
-				if (!HttpContextAccessor.HttpContext.User.Identity.IsAuthenticated) //verificam daca utilizatorul este autentificat
-				{
-					<li><a href="Register">Inregistrare</a></li>
-					<li><a href="Login">Autentificare</a></li>
-				}
-				else
-				{
-					//daca utilizatorul este autentificat, afisam optiunea de deconectare
-					<li><form method="post" asp-controller="User" asp-action="Logout"><button type="submit" class="logout">Logout</button></form></li>
-				}
-			}
-		</ul>
-	</nav>
-</header>
 	<section class="about-section">
 		<h2>Clinica stomatologica la standarde Internationale</h2>
 		<p>

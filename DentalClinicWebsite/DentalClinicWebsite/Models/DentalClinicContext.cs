@@ -26,76 +26,87 @@ namespace DentalClinicWebsite.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            /*
-            modelBuilder.Entity<User>()
-                .HasMany(u => u.Appointments)
-                .WithOne(a => a.User)
-                .HasForeignKey(a => a.UserId);
-            */
 
-            modelBuilder.Entity<Appointment>()
-                .HasOne(a => a.Service)
-                .WithMany(c => c.Appointments)
-                .HasForeignKey(c => c.ServiceId);
-            /*
-            modelBuilder.Entity<Consultation>()
-                .HasOne(c => c.Treatment)
-                .WithMany(t => t.Consultations)
-                .HasForeignKey(c => c.TreatmentId);
+            modelBuilder.Entity<Appointment>(entity =>
+            {
+                entity
+                    .HasOne<User>(s => s.User)
+                    .WithMany(c => c.Appointments)
+                    .HasForeignKey(s => s.UserId)
+                    .OnDelete(DeleteBehavior.ClientNoAction);
 
-            modelBuilder.Entity<Consultation>()
-                .HasOne(c => c.Appointment)
-                .WithOne(a => a.Consultation)
-                .HasForeignKey<Appointment>(a => a.ID);
+                entity
+                    .HasOne<Service>(s => s.Service)
+                    .WithMany(c => c.Appointments)
+                    .HasForeignKey(s => s.ServiceId)
+                    .OnDelete(DeleteBehavior.ClientNoAction);
 
-            modelBuilder.Entity<UserSpecialization>()
-                .HasKey(us => new { us.UserId, us.SpecializationId });
+                entity
+                    .HasOne<Consultation>(s => s.Consultation)
+                    .WithOne(c => c.Appointment)
+                    .HasForeignKey<Consultation>(s => s.AppointmentId)
+                    .OnDelete(DeleteBehavior.ClientNoAction);
+            });
 
-            modelBuilder.Entity<UserSpecialization>()
-                .HasOne(us => us.User)
-                .WithMany(u => u.UserSpecializations)
-                .HasForeignKey(us => us.UserId);
+            modelBuilder.Entity<Billing>()
+                .HasOne(s => s.Consultation)
+                .WithOne(c => c.Billing)
+                .HasForeignKey<Billing>(s => s.ConsultationId)
+                .OnDelete(DeleteBehavior.ClientNoAction);
 
-            modelBuilder.Entity<UserSpecialization>()
-                .HasOne(us => us.Specialization)
-                .WithMany(s => s.UserSpecializations)
-                .HasForeignKey(us => us.SpecializationId);
+            modelBuilder.Entity<TreatmentConsultation>(entity =>
+            {
+                entity
+                   .HasKey(s => new { s.TreatmentId, s.ConsultationId });
 
-            modelBuilder.Entity<TreatmentConsultation>()
-                .HasKey(tc => new { tc.TreatmentId, tc.ConsultationId });
+                entity
+                    .HasOne(s => s.Treatment)
+                    .WithMany(c => c.TreatmentConsultations)
+                    .HasForeignKey(s => s.TreatmentId)
+                    .OnDelete(DeleteBehavior.ClientNoAction);
 
-            modelBuilder.Entity<TreatmentConsultation>()
-                .HasOne(tc => tc.Treatment)
-                .WithMany(t => t.TreatmentConsultations)
-                .HasForeignKey(tc => tc.TreatmentId);
+                entity
+                    .HasOne(s => s.Consultation)
+                    .WithMany(c => c.TreatmentConsultations)
+                    .HasForeignKey(s => s.ConsultationId)
+                    .OnDelete(DeleteBehavior.ClientNoAction);
+            });
 
-            modelBuilder.Entity<TreatmentConsultation>()
-                .HasOne(tc => tc.Consultation)
-                .WithMany(c => c.TreatmentConsultations)
-                .HasForeignKey(tc => tc.ConsultationId);
-            */
             modelBuilder.Entity<Treatment>()
-            .HasOne(t => t.Service)
-            .WithMany(s => s.Treatments)
-            .HasForeignKey(t => t.ServiceId)
-            .OnDelete(DeleteBehavior.Restrict);
+                .HasOne(s => s.Service)
+                .WithMany(c => c.Treatments)
+                .HasForeignKey(s => s.ServiceId)
+                .OnDelete(DeleteBehavior.ClientNoAction);
 
-            modelBuilder.Entity<TreatmentConsultation>()
-                .HasKey(tc => new { tc.TreatmentId, tc.ConsultationId });
+            modelBuilder.Entity<Service>()
+                .HasOne(s => s.Specialization)
+                .WithMany(c => c.Services)
+                .HasForeignKey(s => s.SpecializationId)
+                .OnDelete(DeleteBehavior.ClientNoAction);
 
-            modelBuilder.Entity<TreatmentConsultation>()
-                .HasOne(tc => tc.Treatment)
-                .WithMany(t => t.TreatmentConsultations)
-                .HasForeignKey(tc => tc.TreatmentId)
-                .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<UserSpecialization>(entity =>
+            {
+                entity
+                   .HasKey(s => new { s.SpecializationId, s.UserId });
 
-            modelBuilder.Entity<TreatmentConsultation>()
-                .HasOne(tc => tc.Consultation)
-                .WithMany(c => c.TreatmentConsultations)
-                .HasForeignKey(tc => tc.ConsultationId)
-                .OnDelete(DeleteBehavior.Restrict);
+                entity
+                    .HasOne(s => s.User)
+                    .WithMany(c => c.UserSpecializations)
+                    .HasForeignKey(s => s.UserId)
+                    .OnDelete(DeleteBehavior.ClientNoAction);
 
-            base.OnModelCreating(modelBuilder);
+                entity
+                    .HasOne(s => s.Specialization)
+                    .WithMany(c => c.UserSpecializations)
+                    .HasForeignKey(s => s.SpecializationId)
+                    .OnDelete(DeleteBehavior.ClientNoAction);
+            });
+
+            modelBuilder.Entity<Review>()
+                .HasOne(s => s.User)
+                .WithMany(c => c.Reviews)
+                .HasForeignKey(s => s.UserId)
+                .OnDelete(DeleteBehavior.ClientNoAction);
         }
     }
 }

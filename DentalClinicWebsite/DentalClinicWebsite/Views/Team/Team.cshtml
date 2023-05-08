@@ -1,6 +1,9 @@
 ﻿@using System.Security.Claims
 @inject IHttpContextAccessor HttpContextAccessor
 @model Review
+@{
+    Layout = "_Layout";
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,30 +11,6 @@
 	<link rel="stylesheet" type="text/css" href="css/site.css">
 </head>
 <body>
-	<header>
-		<nav>
-			<ul>
-				<li><a href="Home">Home</a></li>
-				<li><a href="Services">Servicii</a></li>
-				<li><a href="Team" class="active">Echipa</a></li>
-				<li><a href="Prices">Tarife</a></li>
-				<li><a href="Schedule">Programeaza-te</a></li>
-				<li><a href="Contact">Contact</a></li>
-				@{
-					if (!HttpContextAccessor.HttpContext.User.Identity.IsAuthenticated) //verificam daca utilizatorul este autentificat
-					{
-						<li><a href="Register">Inregistrare</a></li>
-						<li><a href="Login">Autentificare</a></li>
-					}
-					else
-					{
-						//daca utilizatorul este autentificat, afisam optiunea de deconectare
-						<li><form method="post" asp-controller="User" asp-action="Logout"><button type="submit" class="logout">Logout</button></form></li>
-					}
-				}
-			</ul>
-		</nav>
-	</header>
 	<main>
 		<section id="echipa" class="banner">
 			<div class="content">
@@ -41,7 +20,7 @@
 		</section>
         <section class="cards">
             <div class="card">
-                <img src="img/dr-alexa.jpg" alt="Dr. Alexa" class="imgdr">
+                <img src="/img/dr-alexa.jpg" alt="Dr. Alexa" class="imgdr">
                 <h2>Dr. Alexa Dumbrava</h2>
                 <p>Medic stomatolog cu experiență de 10 ani.</p>
                 <h3>Review-uri:</h3>
@@ -64,7 +43,7 @@
                 }
             </div>
             <div class="card">
-                <img src="img/dr-florin-mitache.jpg" alt="Dr. Florin" class="imgdr">
+                <img src="/img/dr-florin-mitache.jpg" alt="Dr. Florin" class="imgdr">
                 <h2>Dr. Florin Mitrache</h2>
                 <p>Medic stomatolog cu experiență de 8 ani.</p>
                 <h3>Review-uri:</h3>
@@ -87,7 +66,7 @@
                 }
             </div>
             <div class="card">
-                <img src="img/dr-marius.jpg" alt="Dr. Marius" class="imgdr">
+                <img src="/img/dr-marius.jpg" alt="Dr. Marius" class="imgdr">
                 <h2>Dr. Marius Popescu</h2>
                 <p>Medic stomatolog cu experiență de 5 ani.</p>
                 <h3>Review-uri:</h3>
