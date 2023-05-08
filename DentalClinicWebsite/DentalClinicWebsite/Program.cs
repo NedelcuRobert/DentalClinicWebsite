@@ -8,15 +8,20 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using DentalClinicWebsite.Models.Constraints;
 using Microsoft.AspNetCore.Identity;
 using Abp.Net.Mail;
+using System.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
+
+builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<DentalClinicContext>();
+
 builder.Services.AddDbContext<DentalClinicContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DentalClinicContext")));
 
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
 builder.Services.AddScoped<IServiceService, ServiceService>();
@@ -26,14 +31,24 @@ builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
 
 builder.Services.AddHttpContextAccessor();
 
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    // Password settings
+    options.Password.RequireDigit = true;
+    options.Password.RequiredLength = 8;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireLowercase = false;
+    options.Password.RequiredUniqueChars = 6;
 
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(options =>
-    {
-        options.LoginPath = "/Login";
-        options.AccessDeniedPath = "/Account/AccessDenied";
-    });
+    // Lockout settings
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+    options.Lockout.MaxFailedAccessAttempts = 10;
+    options.Lockout.AllowedForNewUsers = true;
 
+    // User Settings
+    options.User.RequireUniqueEmail = true;
+});
 
 var app = builder.Build();
 
@@ -58,43 +73,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Home}/{id?}");
 
-app.MapControllerRoute(
-    name: "team",
-    pattern: "{controller=Team}/{action=Team}/{id?}");
-
-app.MapControllerRoute(
-    name: "services",
-    pattern: "{controller=Services}/{action=Services}/{id?}");
-
-app.MapControllerRoute(
-    name: "prices",
-    pattern: "{controller=Prices}/{action=Prices}/{id?}");
-
-app.MapControllerRoute(
-    name: "schedule",
-    pattern: "{controller=Schedule}/{action=Schedule}/{id?}");
-
-app.MapControllerRoute(
-    name: "contact",
-    pattern: "{controller=Contact}/{action=Contact}/{id?}");
-
-app.MapControllerRoute(
-    name: "account",
-    pattern: "{controller=Account}/{action=Account}/{id?}");
-
-// Add authentication and authorization middleware for specific routes
-app.MapControllerRoute(
-    name: "login",
-    pattern: "{controller=Login}/{action=Login}/{id?}",
-    defaults: new { controller = "Login", action = "Login" },
-    constraints: new { notLoggedIn = new AuthenticatedUserRouteConstraint() });
-
-app.MapControllerRoute(
-    name: "register",
-    pattern: "{controller=Register}/{action=Register}/{id?}",
-    defaults: new { controller = "Register", action = "Register" },
-    constraints: new { notLoggedIn = new AuthenticatedUserRouteConstraint() });
-
-app.UseStaticFiles();
+app.MapRazorPages();
 
 app.Run();

@@ -1,8 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace DentalClinicWebsite.Models
 {
-    public class DentalClinicContext : DbContext    
+    public class DentalClinicContext : IdentityDbContext<User>
     {
         public DentalClinicContext(DbContextOptions <DentalClinicContext> options) : base(options)
         {
@@ -10,7 +12,6 @@ namespace DentalClinicWebsite.Models
         }
 
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
         public virtual DbSet<Appointment> Appointments { get; set; }
         public virtual DbSet<Consultation> Consultations { get; set; }
