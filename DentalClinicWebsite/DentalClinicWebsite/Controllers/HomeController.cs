@@ -1,6 +1,8 @@
 ﻿using DentalClinicWebsite.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
+using System.Diagnostics;
 
 namespace DentalClinicWebsite.Controllers
 {
@@ -13,16 +15,10 @@ namespace DentalClinicWebsite.Controllers
             _logger = logger;
         }
 
+        [AllowAnonymous]
         public IActionResult Home()
         {
             return View();
         }
-
-        [Authorize(Roles = "Admin")]
-        public IActionResult Contact()
-        {
-            return View();
-        }
-
     }
 }

@@ -59,6 +59,13 @@ namespace DentalClinicWebsite.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+
+            /// <summary>
+            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+            ///     directly from your code. This API may change or be removed in future releases.
+            /// </summary>
+            [Display(Name = "Profile picture")]
+            public string ProfilePicture { get; set; }
         }
 
         private async Task LoadAsync(User user)
@@ -70,7 +77,8 @@ namespace DentalClinicWebsite.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                ProfilePicture = user.Picture // Assuming the User class has a property called ProfilePicture to store the profile picture URL
             };
         }
 
@@ -109,6 +117,14 @@ namespace DentalClinicWebsite.Areas.Identity.Pages.Account.Manage
                     StatusMessage = "Unexpected error when trying to set phone number.";
                     return RedirectToPage();
                 }
+            }
+
+            user.Picture = Input.ProfilePicture;
+            var setPictureProfile = await _userManager.UpdateAsync(user);
+            if (!setPictureProfile.Succeeded)
+            {
+                StatusMessage = "Unexpected error when trying to set picture profile.";
+                return RedirectToPage();
             }
 
             await _signInManager.RefreshSignInAsync(user);

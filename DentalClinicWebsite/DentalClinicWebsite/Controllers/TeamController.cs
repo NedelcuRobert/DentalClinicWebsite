@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace DentalClinicWebsite.Controllers
 {
@@ -7,7 +9,7 @@ namespace DentalClinicWebsite.Controllers
         public TeamController()
         {
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Team()
         {
 

@@ -4,24 +4,23 @@ using DentalClinicWebsite.Repository;
 using DentalClinicWebsite.Services.Interfaces;
 using DentalClinicWebsite.Services;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using DentalClinicWebsite.Models.Constraints;
 using Microsoft.AspNetCore.Identity;
-using Abp.Net.Mail;
-using System.Data;
+using DentalClinicWebsite.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
-
 builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<DentalClinicContext>();
 
+
 builder.Services.AddDbContext<DentalClinicContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DentalClinicContext")));
 
+builder.Services.AddScoped<IRegisterService, RegisterService>();
+builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
 builder.Services.AddScoped<IServiceService, ServiceService>();
@@ -29,7 +28,12 @@ builder.Services.AddScoped<IServiceRepository, ServiceRepository>();
 builder.Services.AddScoped<IReviewService, ReviewService>();
 builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
 
-builder.Services.AddHttpContextAccessor();
+builder.Services.AddAuthentication()
+    .AddFacebook(options => {
+        options.AppId = "1267817830500890";
+        options.AppSecret = "963cce700cc35342c4defef83bf576fd";
+    });
+
 
 builder.Services.Configure<IdentityOptions>(options =>
 {
@@ -48,6 +52,7 @@ builder.Services.Configure<IdentityOptions>(options =>
 
     // User Settings
     options.User.RequireUniqueEmail = true;
+    options.SignIn.RequireConfirmedEmail = false;
 });
 
 var app = builder.Build();

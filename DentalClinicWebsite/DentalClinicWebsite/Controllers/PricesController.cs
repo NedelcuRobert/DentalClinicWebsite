@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DentalClinicWebsite.Controllers
 {
@@ -7,7 +8,7 @@ namespace DentalClinicWebsite.Controllers
         public PricesController()
         {
         }
-
+        [AllowAnonymous]
         public ActionResult Prices()
         {
 

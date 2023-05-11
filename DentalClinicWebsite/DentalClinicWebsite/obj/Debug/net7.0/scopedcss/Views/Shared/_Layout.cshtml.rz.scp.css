@@ -7,6 +7,22 @@ a.navbar-brand[b-o2q3kkbzl2] {
   word-break: break-all;
 }
 
+.navbar[b-o2q3kkbzl2] {
+    top: 0;
+    right: 0;
+    left: auto;
+    width: 100%;
+    z-index: 999;
+}
+
+.navbar-collapse[b-o2q3kkbzl2] {
+    justify-content: flex-end;
+}
+
+.logo-text h1[b-o2q3kkbzl2] {
+    white-space: nowrap;
+}
+
 a[b-o2q3kkbzl2] {
   color: #0077cc;
 }

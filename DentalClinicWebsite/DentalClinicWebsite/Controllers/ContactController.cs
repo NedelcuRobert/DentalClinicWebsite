@@ -4,6 +4,8 @@ using MimeKit;
 using MailKit.Net.Smtp;
 using DentalClinicWebsite.Models;
 using MailKit.Security;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace DentalClinicWebsite.Controllers
 {
@@ -12,10 +14,11 @@ namespace DentalClinicWebsite.Controllers
         private readonly IConfiguration _config;
 
     public ContactController(IConfiguration config)
-    {
+        {
         _config = config;
     }
 
+        [Authorize(Roles = "User")]
         public ActionResult Contact()
         {
 

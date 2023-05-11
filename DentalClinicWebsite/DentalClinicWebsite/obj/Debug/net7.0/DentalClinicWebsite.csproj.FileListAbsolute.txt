@@ -589,3 +589,6 @@ D:\FACULTATE\PROIECTE\DentalClinicWebsite\DentalClinicWebsite\DentalClinicWebsit
 D:\FACULTATE\PROIECTE\DentalClinicWebsite\DentalClinicWebsite\DentalClinicWebsite\bin\Debug\net7.0\Microsoft.AspNetCore.Identity.UI.dll
 D:\FACULTATE\PROIECTE\DentalClinicWebsite\DentalClinicWebsite\DentalClinicWebsite\bin\Debug\net7.0\Microsoft.Extensions.FileProviders.Embedded.dll
 D:\FACULTATE\PROIECTE\DentalClinicWebsite\DentalClinicWebsite\DentalClinicWebsite\obj\Debug\net7.0\DentalClinicWebsite.MvcApplicationPartsAssemblyInfo.cs
+D:\FACULTATE\PROIECTE\DentalClinicWebsite\DentalClinicWebsite\DentalClinicWebsite\bin\Debug\net7.0\AutoMapper.dll
+D:\FACULTATE\PROIECTE\DentalClinicWebsite\DentalClinicWebsite\DentalClinicWebsite\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.Facebook.dll
+D:\FACULTATE\PROIECTE\DentalClinicWebsite\DentalClinicWebsite\DentalClinicWebsite\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.Google.dll

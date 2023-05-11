@@ -9,14 +9,18 @@
       "DentalClinicWebsite/1.0.0": {
         "dependencies": {
           "Abp": "8.1.0",
+          "AutoMapper": "12.0.1",
           "EntityFramework": "6.4.4",
           "MailKit": "4.0.0",
+          "Microsoft.AspNetCore.Authentication.Facebook": "7.0.5",
+          "Microsoft.AspNetCore.Authentication.Google": "7.0.5",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.5",
           "Microsoft.AspNetCore.Identity.UI": "7.0.5",
           "Microsoft.EntityFrameworkCore": "7.0.5",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.5",
           "Microsoft.EntityFrameworkCore.Tools": "7.0.5",
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "7.0.6"
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "7.0.6",
+          "SweetAlert": "1.0.0"
         },
         "runtime": {
           "DentalClinicWebsite.dll": {}
@@ -49,6 +53,17 @@
           "lib/netstandard2.0/Abp.dll": {
             "assemblyVersion": "8.1.0.0",
             "fileVersion": "8.1.0.0"
+          }
+        }
+      },
+      "AutoMapper/12.0.1": {
+        "dependencies": {
+          "Microsoft.CSharp": "4.7.0"
+        },
+        "runtime": {
+          "lib/netstandard2.1/AutoMapper.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.1.0"
           }
         }
       },
@@ -196,6 +211,22 @@
           "lib/net6.0/MailKit.dll": {
             "assemblyVersion": "4.0.0.0",
             "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.Facebook/7.0.5": {
+        "runtime": {
+          "lib/net7.0/Microsoft.AspNetCore.Authentication.Facebook.dll": {
+            "assemblyVersion": "7.0.5.0",
+            "fileVersion": "7.0.523.17410"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.Google/7.0.5": {
+        "runtime": {
+          "lib/net7.0/Microsoft.AspNetCore.Authentication.Google.dll": {
+            "assemblyVersion": "7.0.5.0",
+            "fileVersion": "7.0.523.17410"
           }
         }
       },
@@ -1827,6 +1858,7 @@
           }
         }
       },
+      "SweetAlert/1.0.0": {},
       "System.AppContext/4.3.0": {
         "dependencies": {
           "System.Runtime": "4.3.0"
@@ -2856,6 +2888,13 @@
       "path": "abp/8.1.0",
       "hashPath": "abp.8.1.0.nupkg.sha512"
     },
+    "AutoMapper/12.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hvV62vl6Hp/WfQ24yzo3Co9+OPl8wH8hApwVtgWpiAynVJkUcs7xvehnSftawL8Pe8FrPffBRM3hwzLQqWDNjA==",
+      "path": "automapper/12.0.1",
+      "hashPath": "automapper.12.0.1.nupkg.sha512"
+    },
     "Azure.Core/1.24.0": {
       "type": "package",
       "serviceable": true,
@@ -2932,6 +2971,20 @@
       "sha512": "sha512-vtP6nUU0ByEZTnpbtsfdxyRvcssNSgIml4zi2hpBOV4gYNoaYSt+4VCx28MMnfaO/9J1IzcG+Hc8kXMkWX6iRQ==",
       "path": "mailkit/4.0.0",
       "hashPath": "mailkit.4.0.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authentication.Facebook/7.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OnSgITl3N8v8A447zrWqyoeqoYLxcY3ixVTKf1a5h+QpmZUujH/gvJRETHaUIVlk3b64MlzbkdAG/JsHpVjlpw==",
+      "path": "microsoft.aspnetcore.authentication.facebook/7.0.5",
+      "hashPath": "microsoft.aspnetcore.authentication.facebook.7.0.5.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authentication.Google/7.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-W7GAE+Gor29canssOYuZzTHOPsPX1FjYLlOoqWRA9fw7Hk7JSBo9n682LngXokvICzWKzV0MIuUa+izLmk/VmA==",
+      "path": "microsoft.aspnetcore.authentication.google/7.0.5",
+      "hashPath": "microsoft.aspnetcore.authentication.google.7.0.5.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Cryptography.Internal/7.0.5": {
       "type": "package",
@@ -3702,6 +3755,13 @@
       "sha512": "sha512-YhEdSQUsTx+C8m8Bw7ar5/VesXvCFMItyZF7G1AUY+OM0VPZUOeAVpJ4Wl6fydBGUYZxojTDR3I6Bj/+BPkJNA==",
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
+    },
+    "SweetAlert/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eaHJph59CQhNUf5h6k02LaWM31az2t8JBHcJuVXW2dZ+QU2TDkHCxOUSNdAVIgfj+ivQsBTp6laWt8H0nKAydQ==",
+      "path": "sweetalert/1.0.0",
+      "hashPath": "sweetalert.1.0.0.nupkg.sha512"
     },
     "System.AppContext/4.3.0": {
       "type": "package",

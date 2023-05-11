@@ -13,7 +13,7 @@ namespace DentalClinicWebsite.Controllers
         public ScheduleController()
         {
         }
-
+        [Authorize(Roles = "User")]
         public ActionResult Schedule()
         {
 
