@@ -1,4 +1,5 @@
 ﻿using DentalClinicWebsite.Models;
+using DentalClinicWebsite.Models.DTOs;
 using DentalClinicWebsite.Repository.Interfaces;
 using DentalClinicWebsite.Services.Interfaces;
 
@@ -13,39 +14,35 @@ namespace DentalClinicWebsite.Services
             _appointmentRepository = appointmentRepository;
         }
 
-        public IEnumerable<Appointment> GetAllAppointments()
+        public IEnumerable<Service> GetServices(int specializationId)
         {
-            return _appointmentRepository.GetAllAppointments();
+            return  _appointmentRepository.GetServices(specializationId);
         }
 
-        public Appointment GetAppointmentById(int id)
+        public IEnumerable<User> GetDentists(int specializationId)
         {
-            return _appointmentRepository.GetAppointmentById(id);
+            return _appointmentRepository.GetDentists(specializationId);
         }
 
-        public void CreateAppointment(Appointment appointment)
+        public async Task<IEnumerable<Appointment>> GetAvailableAppointmentsAsync(int serviceId, string dentistId)
         {
-            if (appointment == null)
+            return await _appointmentRepository.GetAvailableAppointmentsAsync(serviceId, dentistId);
+        }
+
+        public async Task CreateAppointmentAsync(AppointmentDTO appointmentDTO)
+        {
+            var appointment = new Appointment
             {
-                throw new ArgumentNullException(nameof(appointment), "Appointment cannot be null");
-            }
-
-            _appointmentRepository.AddAppointment(appointment);
+                UserId = appointmentDTO.UserId,
+                DentistId = appointmentDTO.DentistId,
+                ServiceId = appointmentDTO.ServiceId,
+                CalendarData = appointmentDTO.Date.Date.Add(appointmentDTO.Time)
+            };
+            await _appointmentRepository.CreateAppointmentAsync(appointment);
         }
-
-        public void UpdateAppointment(Appointment appointment)
+        public IEnumerable<Specialization> GetSpecializations()
         {
-            if (appointment == null)
-            {
-                throw new ArgumentNullException(nameof(appointment), "Appointment cannot be null");
-            }
-
-            _appointmentRepository.UpdateAppointment(appointment);
-        }
-
-        public void DeleteAppointment(int id)
-        {
-            _appointmentRepository.DeleteAppointment(id);
+            return _appointmentRepository.GetSpecializations();
         }
     }
 }

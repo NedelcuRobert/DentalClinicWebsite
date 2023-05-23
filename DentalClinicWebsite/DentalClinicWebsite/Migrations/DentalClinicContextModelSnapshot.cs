@@ -33,6 +33,9 @@ namespace DentalClinicWebsite.Migrations
                     b.Property<DateTime>("CalendarData")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("DentistId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("ServiceId")
                         .HasColumnType("int");
 
@@ -40,6 +43,8 @@ namespace DentalClinicWebsite.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("DentistId");
 
                     b.HasIndex("ServiceId");
 
@@ -443,6 +448,11 @@ namespace DentalClinicWebsite.Migrations
 
             modelBuilder.Entity("DentalClinicWebsite.Models.Appointment", b =>
                 {
+                    b.HasOne("DentalClinicWebsite.Models.User", "Dentist")
+                        .WithMany()
+                        .HasForeignKey("DentistId")
+                        .OnDelete(DeleteBehavior.ClientNoAction);
+
                     b.HasOne("DentalClinicWebsite.Models.Service", "Service")
                         .WithMany("Appointments")
                         .HasForeignKey("ServiceId")
@@ -453,6 +463,8 @@ namespace DentalClinicWebsite.Migrations
                         .WithMany("Appointments")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.ClientNoAction);
+
+                    b.Navigation("Dentist");
 
                     b.Navigation("Service");
 

@@ -4,10 +4,10 @@ namespace DentalClinicWebsite.Repository.Interfaces
 {
     public interface IAppointmentRepository
     {
-        IEnumerable<Appointment> GetAllAppointments();
-        Appointment GetAppointmentById(int id);
-        void AddAppointment(Appointment appointment);
-        void UpdateAppointment(Appointment appointment);
-        void DeleteAppointment(int id);
+        IEnumerable<User> GetDentists(int specializationId);
+        IEnumerable<Service> GetServices(int specializationId);
+        Task<IEnumerable<Appointment>> GetAvailableAppointmentsAsync(int serviceId, string dentistId);
+        Task CreateAppointmentAsync(Appointment appointment);
+        IEnumerable<Specialization> GetSpecializations();
     }
 }

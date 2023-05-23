@@ -1,33 +1,100 @@
-﻿@model DentistServices
-@{
-    Layout = "_Layout";
-}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Programeaza-te</title>
-    <link rel="stylesheet" href="css/site.css" />
-</head>
-<body>
-    <main>
-        <form id="programare-form" method="post" asp-controller="Schedule" asp-action="Schedule">
-            <label>Selectează serviciul:</label>
-            <select name="serviciu">
-                <option value="">Selectează serviciul</option>
-            </select>
+﻿@using System.Security.Claims;
+<form id="programare-form" method="post" asp-controller="Schedule" asp-action="CreateAppointment">
+    <label>Selectează specializarea:</label>
+    <select name="SpecializationId" id="specialization-select">
+        <option value="">Selectează specializarea</option>
+        @foreach (var specialization in ViewBag.Specializations)
+        {
+            <option value="@specialization.ID">@specialization.Name</option>
+        }
+    </select>
 
-            <label>Selectează medicul:</label>
-            <select name="medic">
-                <option value="">Selectează medicul</option>
-            </select>
-            <label>Data:</label>
-            <input type="date" name="data" />
-            <label>Ora:</label>
-            <input type="time" name="ora" />
-            <button type="submit">Programează-te</button>
-        </form>
-    </main>
-</body>
-</html>
+    <label>Selectează serviciul:</label>
+    <select name="ServiceId" id="service-select" disabled>
+        <option value="">Selectează serviciul</option>
+    </select>
+
+    <label>Selectează medicul:</label>
+    <select name="DentistId" id="dentist-select" disabled>
+        <option value="">Selectează medicul</option>
+    </select>
+
+    <input type="hidden" name="UserId" id="hidden-userid-input" />
+    <input type="hidden" name="DentistId" id="hidden-dentistid-input" />
+
+    <label>Data:</label>
+    <input type="date" name="Date" id="date-input" />
+
+    <label>Ora:</label>
+    <input type="time" name="Time" id="time-input" />
+
+    <button type="submit">Programează-te</button>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var userId = "@User.FindFirstValue(ClaimTypes.NameIdentifier)";
+        // Setați valoarea elementului #hidden-userid-input
+        $("#hidden-userid-input").val(userId);
+        // Manipulați evenimentul change al selecției de specializare
+        $("#specialization-select").change(function () {
+            var selectedSpecializationId = $(this).val();
+            if (selectedSpecializationId !== "") {
+                // Efectuați o solicitare AJAX pentru a obține lista de servicii disponibile pentru specializarea selectată
+                $.ajax({
+                    url: "@Url.Action("GetServices", "Schedule")",
+                    data: { "specializationId": selectedSpecializationId },
+                    method: "GET",
+                    dataType: "json", // Specificați tipul de date așteptat în răspuns (JSON)
+                    success: function (data) {
+                        var serviceSelect = $("#service-select");
+                        serviceSelect.empty();
+                        serviceSelect.append('<option value="">Selectează serviciul</option>');
+                        $.each(data, function (index, service) { // Parcurgeți fiecare serviciu în array
+                            serviceSelect.append('<option value="' + service.id + '">' + service.name + '</option>');
+                        });
+
+                        serviceSelect.prop("disabled", false);
+
+                        $.ajax({
+                            url: "@Url.Action("GetDentists", "Schedule")",
+                            data: { "specializationId": selectedSpecializationId },
+                            method: "GET",
+                            dataType: "json",
+                            success: function (data) {
+                                var dentistSelect = $("#dentist-select");
+                                dentistSelect.empty();
+                                dentistSelect.append('<option value="">Selectează medicul</option>');
+                                $.each(data, function (index, dentist) {
+                                    dentistSelect.append('<option value="' + dentist.id + '">' + dentist.firstName + ' ' + dentist.lastName + '</option>');
+                                });
+
+                                // Eliminati proprietatea "disabled" din elementele <select>
+                                dentistSelect.prop("disabled", false);
+
+                                dentistSelect.change(function () {
+                                    var selectedDentistId = $(this).val();
+
+                                    // Actualizați valoarea elementului #hidden-dentistid-input
+                                    $("#hidden-dentistid-input").val(selectedDentistId);
+                                });
+                            }
+                        });
+                    }
+                });
+            } else {
+                // Dacă nu se selectează nicio specializare, golim selecția și dezactivăm elementele <select>
+                var serviceSelect = $("#service-select");
+                serviceSelect.empty();
+                serviceSelect.append('<option value="">Selectează serviciul</option>');
+                serviceSelect.prop("disabled", true);
+
+                var dentistSelect = $("#dentist-select");
+                dentistSelect.empty();
+                dentistSelect.append('<option value="">Selectează medicul</option>');
+                dentistSelect.prop("disabled", true);
+            }
+        });
+    });
+</script>

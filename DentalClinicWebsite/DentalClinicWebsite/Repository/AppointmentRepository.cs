@@ -1,65 +1,58 @@
 ﻿using DentalClinicWebsite.Models;
 using DentalClinicWebsite.Repository.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Data.Entity;
+using System.Diagnostics;
 
 namespace DentalClinicWebsite.Repository
 {
     public class AppointmentRepository : IAppointmentRepository
     {
         private readonly DentalClinicContext _context;
+        private readonly UserManager<User> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AppointmentRepository(DentalClinicContext context)
+        public AppointmentRepository(DentalClinicContext context, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
             _context = context;
+            _userManager = userManager;
+            _roleManager = roleManager;
+        }
+        public IEnumerable<Service> GetServices(int specializationId)
+        {
+            var services = _context.Set<Service>()
+                .Where(s => s.SpecializationId == specializationId);
+
+            return services;
         }
 
-        public IEnumerable<Appointment> GetAllAppointments()
+        public IEnumerable<User> GetDentists(int specializationId)
         {
-            return _context.Appointments
-                            .Include(a => a.User)
-                            .Include(a => a.Consultation)
-                            .ToList();
+            var userIds = _userManager.GetUsersInRoleAsync("Admin").GetAwaiter().GetResult()
+                .Select(u => u.Id).ToList();
+
+            return _context.Set<User>()
+                .Where(u => userIds.Contains(u.Id) && u.UserSpecializations.Any(us => us.ID == specializationId))
+                .ToList();
         }
 
-        public Appointment GetAppointmentById(int id)
+        public async Task<IEnumerable<Appointment>> GetAvailableAppointmentsAsync(int serviceId, string dentistId)
         {
-            return _context.Appointments
-                            .Include(a => a.User)
-                            .Include(a => a.Consultation)
-                            .FirstOrDefault(a => a.ID == id);
+            return await _context.Set<Appointment>()
+                .Where(a => a.ID == serviceId && a.UserId == dentistId)
+                .ToListAsync();
         }
 
-        public void AddAppointment(Appointment appointment)
+        public async Task CreateAppointmentAsync(Appointment appointment)
         {
-            if (appointment == null)
-            {
-                throw new ArgumentNullException(nameof(appointment), "Appointment cannot be null");
-            }
-
-            _context.Appointments.Add(appointment);
-            _context.SaveChanges();
+            _context.Set<Appointment>().Add(appointment);
+            await _context.SaveChangesAsync();
         }
 
-        public void UpdateAppointment(Appointment appointment)
+        public IEnumerable<Specialization> GetSpecializations()
         {
-            if (appointment == null)
-            {
-                throw new ArgumentNullException(nameof(appointment), "Appointment cannot be null");
-            }
-
-            _context.Entry(appointment).State = EntityState.Modified;
-            _context.SaveChanges();
-        }
-
-        public void DeleteAppointment(int id)
-        {
-            var appointment = _context.Appointments.FirstOrDefault(a => a.ID == id);
-
-            if (appointment != null)
-            {
-                _context.Appointments.Remove(appointment);
-                _context.SaveChanges();
-            }
+            return _context.Set<Specialization>();
         }
     }
 
