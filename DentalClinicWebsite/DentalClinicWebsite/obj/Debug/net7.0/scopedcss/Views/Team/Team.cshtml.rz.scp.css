@@ -1,0 +1,34 @@
+h1[b-ijzez4v4y6] {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.team-container[b-ijzez4v4y6] {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.team-member[b-ijzez4v4y6] {
+    text-align: center;
+    margin: 20px;
+}
+
+    .team-member img[b-ijzez4v4y6] {
+        width: 200px;
+        height: auto;
+        border-radius: 50%;
+    }
+
+    .team-member h3[b-ijzez4v4y6] {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+
+    .team-member p[b-ijzez4v4y6] {
+        font-size: 14px;
+        margin-top: 5px;
+    }

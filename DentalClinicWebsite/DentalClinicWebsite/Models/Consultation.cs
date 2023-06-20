@@ -6,7 +6,6 @@
         public int AppointmentId { get; set; }
         public int TreatmentId { get; set; }
         public string Description { get; set; }
-
         public virtual Appointment Appointment { get; set; }
         public virtual Treatment Treatment { get; set; }
         public virtual Billing Billing { get; set; }

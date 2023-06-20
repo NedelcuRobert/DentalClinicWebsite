@@ -7,40 +7,55 @@ namespace DentalClinicWebsite.Repository
     public class TreatmentRepository : ITreatmentRepository
     {
         private readonly DentalClinicContext _context;
+        private readonly DbContextOptions<DentalClinicContext> _contextOptions;
 
-        public TreatmentRepository(DentalClinicContext context)
+
+        public TreatmentRepository(DentalClinicContext context, DbContextOptions<DentalClinicContext> contextOptions)
         {
             _context = context;
+            _contextOptions = contextOptions;
         }
 
-        public async Task<IEnumerable<Treatment>> GetAllTreatmentsAsync()
+        public IEnumerable<Treatment> GetAllTreatments()
         {
-            return await _context.Treatments.ToListAsync();
+            using var context = new DentalClinicContext(_contextOptions);
+            return context.Treatments.Include(t => t.Service).ToList();
         }
 
-        public async Task<Treatment> GetTreatmentByIdAsync(int id)
+        public IEnumerable<Treatment> GetTreatmentsByService(int serviceId)
         {
-            return await _context.Treatments.FindAsync(id);
+            var treatments = _context.Treatments
+                .Where(t => t.ServiceId == serviceId)
+                .ToList();
+
+            return treatments;
         }
 
-        public async Task<Treatment> CreateTreatmentAsync(Treatment newTreatment)
+        public Treatment GetTreatmentById(int id)
         {
-            _context.Treatments.Add(newTreatment);
+            return _context.Treatments.Find(id);
+        }
+
+        public async Task AddTreatmentAsync(Treatment treatment)
+        {
+            await _context.Treatments.AddAsync(treatment);
             await _context.SaveChangesAsync();
-            return newTreatment;
         }
 
-        public async Task<Treatment> UpdateTreatmentAsync(Treatment updatedTreatment)
+        public async Task UpdateTreatmentAsync(Treatment treatment)
         {
-            _context.Entry(updatedTreatment).State = EntityState.Modified;
+            _context.Treatments.Update(treatment);
             await _context.SaveChangesAsync();
-            return updatedTreatment;
         }
 
-        public async Task DeleteTreatmentAsync(Treatment treatment)
+        public async Task DeleteTreatmentAsync(int id)
         {
-            _context.Treatments.Remove(treatment);
-            await _context.SaveChangesAsync();
+            var treatment = await _context.Treatments.FindAsync(id);
+            if (treatment != null)
+            {
+                _context.Treatments.Remove(treatment);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }

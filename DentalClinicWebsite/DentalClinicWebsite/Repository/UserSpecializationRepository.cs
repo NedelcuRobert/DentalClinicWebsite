@@ -2,7 +2,7 @@
 using DentalClinicWebsite.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace DentalClinicWebsite.Repository
+namespace DentalClinicWebsite.Repositories
 {
     public class UserSpecializationRepository : IUserSpecializationRepository
     {
@@ -13,52 +13,31 @@ namespace DentalClinicWebsite.Repository
             _dbContext = dbContext;
         }
 
-        public async Task<List<UserSpecialization>> GetAllAsync()
-        {
-            return await _dbContext.UserSpecializations
-                .Include(us => us.User)
-                .Include(us => us.Specialization)
-                .ToListAsync();
-        }
-
-        public async Task<UserSpecialization> GetByIdAsync(int id)
+        public async Task<UserSpecialization> GetUserSpecializationByIdAsync(int id)
         {
             return await _dbContext.UserSpecializations.FindAsync(id);
         }
 
-        public async Task<List<UserSpecialization>> GetByUserIdAsync(string userId)
+        public async Task<List<UserSpecialization>> GetUserSpecializationsByUserIdAsync(string userId)
         {
             return await _dbContext.UserSpecializations
-                .Include(us => us.User)
-                .Include(us => us.Specialization)
                 .Where(us => us.UserId == userId)
                 .ToListAsync();
         }
 
-        public async Task<List<UserSpecialization>> GetBySpecializationIdAsync(int specializationId)
-        {
-            return await _dbContext.UserSpecializations
-                .Include(us => us.User)
-                .Include(us => us.Specialization)
-                .Where(us => us.SpecializationId == specializationId)
-                .ToListAsync();
-        }
-
-        public async Task<UserSpecialization> AddAsync(UserSpecialization userSpecialization)
+        public async Task AddUserSpecializationAsync(UserSpecialization userSpecialization)
         {
             _dbContext.UserSpecializations.Add(userSpecialization);
             await _dbContext.SaveChangesAsync();
-            return userSpecialization;
         }
 
-        public async Task<UserSpecialization> UpdateAsync(UserSpecialization userSpecialization)
+        public async Task UpdateUserSpecializationAsync(UserSpecialization userSpecialization)
         {
             _dbContext.Entry(userSpecialization).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
-            return userSpecialization;
         }
 
-        public async Task DeleteAsync(UserSpecialization userSpecialization)
+        public async Task RemoveUserSpecializationAsync(UserSpecialization userSpecialization)
         {
             _dbContext.UserSpecializations.Remove(userSpecialization);
             await _dbContext.SaveChangesAsync();

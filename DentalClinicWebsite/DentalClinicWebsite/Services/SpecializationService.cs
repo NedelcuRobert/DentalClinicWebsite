@@ -1,4 +1,5 @@
 ﻿using DentalClinicWebsite.Models;
+using DentalClinicWebsite.Repository;
 using DentalClinicWebsite.Repository.Interfaces;
 using DentalClinicWebsite.Services.Interfaces;
 
@@ -13,6 +14,11 @@ namespace DentalClinicWebsite.Services
             _repository = repository;
         }
 
+        public Task<IEnumerable<string>> GetSpecializationsForDentist(string dentistId)
+        {
+            return _repository.GetSpecializationsForDentist(dentistId);
+        }
+
         public async Task<Specialization> GetByIdAsync(int id)
         {
             var specialization = await _repository.GetByIdAsync(id);
@@ -25,9 +31,9 @@ namespace DentalClinicWebsite.Services
             return specialization;
         }
 
-        public async Task<IEnumerable<Specialization>> GetAllAsync()
+        public IEnumerable<Specialization> GetAll()
         {
-            return await _repository.GetAllAsync();
+            return _repository.GetAllSpecializations();
         }
 
         public async Task AddAsync(Specialization specialization)

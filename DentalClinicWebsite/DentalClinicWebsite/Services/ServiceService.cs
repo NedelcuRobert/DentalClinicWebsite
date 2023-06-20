@@ -13,14 +13,19 @@ namespace DentalClinicWebsite.Services
             _serviceRepository = serviceRepository;
         }
 
-        public async Task<IEnumerable<Service>> GetAllServicesAsync()
+        public IEnumerable<Service> GetAllServices()
         {
-            return await _serviceRepository.GetAllServicesAsync();
+            return _serviceRepository.GetAllServices();
         }
 
-        public async Task<Service> GetServiceByIdAsync(int id)
+        public IEnumerable<Service> GetServicesBySpecialization(int specializationId)
         {
-            return await _serviceRepository.GetServiceByIdAsync(id);
+            return _serviceRepository.GetServicesBySpecialization(specializationId);
+        }
+
+        public Service GetServiceById(int id)
+        {
+            return  _serviceRepository.GetServiceById(id);
         }
 
         public async Task AddServiceAsync(Service service)

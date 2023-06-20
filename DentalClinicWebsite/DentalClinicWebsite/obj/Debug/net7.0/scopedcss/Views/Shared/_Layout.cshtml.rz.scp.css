@@ -1,64 +1,68 @@
-/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
+/* Culorile temei */
+:root[b-o2q3kkbzl2] {
+    --primary-color: #D8B3E7; /* Culoarea principală */
+    --secondary-color: #6c757d; /* Culoarea secundară */
+    --background-color: #DDB3F5; /* Culoarea de fundal */
+}
 
-a.navbar-brand[b-o2q3kkbzl2] {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+
+.logo[b-o2q3kkbzl2] {
+    width: 30px; /* Ajustează dimensiunea imaginii conform preferințelor tale */
+}
+
+.logo-title[b-o2q3kkbzl2] {
+    display: inline-block;
+    margin-top: 5px;
+}
+
+
+.logo-text[b-o2q3kkbzl2] {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--secondary-color);
 }
 
 .navbar[b-o2q3kkbzl2] {
-    top: 0;
-    right: 0;
-    left: auto;
-    width: 100%;
-    z-index: 999;
+    background-color: var(--primary-color);
+    padding: 20px 0;
+}
+
+.nav-link[b-o2q3kkbzl2] {
+    color: var(--secondary-color) !important;
+}
+
+    .nav-link:hover[b-o2q3kkbzl2] {
+        color: white !important;
+    }
+
+.container[b-o2q3kkbzl2] {
+    margin-top: 20px;
+}
+
+
+.navbar-brand[b-o2q3kkbzl2] {
+    margin-right: 10px;
+}
+
+.navbar-toggler[b-o2q3kkbzl2] {
+    padding: 0.25rem 0.5rem;
 }
 
 .navbar-collapse[b-o2q3kkbzl2] {
-    justify-content: flex-end;
+    margin-top: -5px;
 }
 
-.logo-text h1[b-o2q3kkbzl2] {
-    white-space: nowrap;
+.navbar-nav[b-o2q3kkbzl2] {
+    align-items: center;
 }
 
-a[b-o2q3kkbzl2] {
-  color: #0077cc;
+.nav-link[b-o2q3kkbzl2] {
+    padding: 0.5rem;
+    font-size: 14px;
 }
 
-.btn-primary[b-o2q3kkbzl2] {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+body[b-o2q3kkbzl2] {
+    background: linear-gradient(135deg, #B2EBF2, #E0F7FA);
 }
 
-.nav-pills .nav-link.active[b-o2q3kkbzl2], .nav-pills .show > .nav-link[b-o2q3kkbzl2] {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-.border-top[b-o2q3kkbzl2] {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom[b-o2q3kkbzl2] {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow[b-o2q3kkbzl2] {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy[b-o2q3kkbzl2] {
-  font-size: 1rem;
-  line-height: inherit;
-}
-
-.footer[b-o2q3kkbzl2] {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
-}

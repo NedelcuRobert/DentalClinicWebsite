@@ -176,30 +176,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Account/Account.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBY2NvdW50LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Contact/Contact.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFxDb250YWN0LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Home/Home.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIb21lLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Prices/Prices.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpY2VzXFByaWNlcy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Schedule/Schedule.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NoZWR1bGVcU2NoZWR1bGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Services/Services.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZXNcU2VydmljZXMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -212,10 +188,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Team/Team.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhbVxUZWFtLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -224,6 +196,38 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Admin/Admin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-g2r1cz7npl
+
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Contact/Contact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFxDb250YWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-0vypr3z195
+
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Home/Home.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIb21lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-vo96celdc3
+
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/MySchedules/MySchedules.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXlTY2hlZHVsZXNcTXlTY2hlZHVsZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-kxzyd2uu88
+
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Prices/Prices.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJpY2VzXFByaWNlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-9uw7sew7nl
+
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Schedule/Schedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NoZWR1bGVcU2NoZWR1bGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-9l25omiuzc
+
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Services/Services.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZXNcU2VydmljZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-m0vm8v8yog
+
 [D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-o2q3kkbzl2
+
+[D:/FACULTATE/PROIECTE/DentalClinicWebsite/DentalClinicWebsite/DentalClinicWebsite/Views/Team/Team.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhbVxUZWFtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-ijzez4v4y6

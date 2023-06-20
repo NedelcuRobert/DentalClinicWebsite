@@ -13,29 +13,34 @@ namespace DentalClinicWebsite.Services
             _treatmentRepository = treatmentRepository;
         }
 
-        public async Task<IEnumerable<Treatment>> GetAllTreatmentsAsync()
+        public IEnumerable<Treatment> GetAllTreatments()
         {
-            return await _treatmentRepository.GetAllTreatmentsAsync();
+            return _treatmentRepository.GetAllTreatments();
         }
 
-        public async Task<Treatment> GetTreatmentByIdAsync(int id)
+        public IEnumerable<Treatment> GetTreatmentsByService(int serviceId)
         {
-            return await _treatmentRepository.GetTreatmentByIdAsync(id);
+            return _treatmentRepository.GetTreatmentsByService(serviceId);    
         }
 
-        public async Task<Treatment> CreateTreatmentAsync(Treatment newTreatment)
+        public Treatment GetTreatmentById(int id)
         {
-            return await _treatmentRepository.CreateTreatmentAsync(newTreatment);
+            return _treatmentRepository.GetTreatmentById(id);
         }
 
-        public async Task<Treatment> UpdateTreatmentAsync(Treatment updatedTreatment)
+        public async Task AddTreatmentAsync(Treatment treatment)
         {
-            return await _treatmentRepository.UpdateTreatmentAsync(updatedTreatment);
+            await _treatmentRepository.AddTreatmentAsync(treatment);
         }
 
-        public async Task DeleteTreatmentAsync(Treatment treatment)
+        public async Task UpdateTreatmentAsync(Treatment treatment)
         {
-            await _treatmentRepository.DeleteTreatmentAsync(treatment);
+            await _treatmentRepository.UpdateTreatmentAsync(treatment);
+        }
+
+        public async Task DeleteTreatmentAsync(int id)
+        {
+            await _treatmentRepository.DeleteTreatmentAsync(id);
         }
     }
 }

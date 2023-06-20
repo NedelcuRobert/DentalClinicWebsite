@@ -5,7 +5,7 @@ using DentalClinicWebsite.Services.Interfaces;
 using DentalClinicWebsite.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using DentalClinicWebsite.Controllers;
+using DentalClinicWebsite.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +27,12 @@ builder.Services.AddScoped<IServiceService, ServiceService>();
 builder.Services.AddScoped<IServiceRepository, ServiceRepository>();
 builder.Services.AddScoped<IReviewService, ReviewService>();
 builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
+builder.Services.AddScoped<ISpecializationRepository, SpecializationRepository>();
+builder.Services.AddScoped<ISpecializationService, SpecializationService>();
+builder.Services.AddScoped<ITreatmentRepository, TreatmentRepository>();
+builder.Services.AddScoped<ITreatmentService, TreatmentService>();
+builder.Services.AddScoped<IUserSpecializationRepository, UserSpecializationRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddAuthentication()
     .AddFacebook(options => {

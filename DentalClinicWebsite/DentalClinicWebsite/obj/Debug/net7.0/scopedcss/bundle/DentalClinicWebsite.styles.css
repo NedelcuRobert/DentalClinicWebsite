@@ -1,65 +1,503 @@
-/* _content/DentalClinicWebsite/Views/Shared/_Layout.cshtml.rz.scp.css */
-/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
+/* _content/DentalClinicWebsite/Views/Admin/Admin.cshtml.rz.scp.css */
+h1[b-g2r1cz7npl] {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
 
-a.navbar-brand[b-o2q3kkbzl2] {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+h2[b-g2r1cz7npl] {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.table[b-g2r1cz7npl] {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+    .table th[b-g2r1cz7npl],
+    .table td[b-g2r1cz7npl] {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .table th[b-g2r1cz7npl] {
+        font-weight: bold;
+    }
+
+    .table input[type="text"][b-g2r1cz7npl],
+    .table input[type="email"][b-g2r1cz7npl],
+    .table input[type="number"][b-g2r1cz7npl],
+    .table select[b-g2r1cz7npl] {
+        width: 100%;
+        padding: 6px 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .table button[b-g2r1cz7npl] {
+        padding: 6px 10px;
+        margin-right: 5px;
+    }
+
+.btn-primary[b-g2r1cz7npl] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+}
+
+.btn-danger[b-g2r1cz7npl] {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+}
+
+    .btn-primary:hover[b-g2r1cz7npl],
+    .btn-danger:hover[b-g2r1cz7npl] {
+        opacity: 0.8;
+        cursor: pointer;
+    }
+/* _content/DentalClinicWebsite/Views/Contact/Contact.cshtml.rz.scp.css */
+.contact-info[b-0vypr3z195] {
+    margin-bottom: 20px;
+}
+
+    .contact-info .info-item[b-0vypr3z195] {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+        .contact-info .info-item i[b-0vypr3z195] {
+            margin-right: 10px;
+            color: #007bff;
+        }
+
+        .contact-info .info-item span[b-0vypr3z195] {
+            font-size: 16px;
+        }
+
+.form-group[b-0vypr3z195] {
+    margin-bottom: 20px;
+}
+
+    .form-group label[b-0vypr3z195] {
+        display: block;
+        font-size: 18px;
+        font-weight: bold;
+        color: #007bff;
+        margin-bottom: 10px;
+    }
+
+    .form-group input[b-0vypr3z195],
+    .form-group textarea[b-0vypr3z195] {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+    }
+
+button[type="submit"][b-0vypr3z195] {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    button[type="submit"]:hover[b-0vypr3z195] {
+        background-color: #0056b3;
+    }
+
+
+@media (max-width: 768px) {
+    .form-group label[b-0vypr3z195] {
+        font-size: 16px;
+    }
+
+    .form-group input[b-0vypr3z195],
+    .form-group textarea[b-0vypr3z195] {
+        font-size: 14px;
+    }
+
+    button[type="submit"][b-0vypr3z195] {
+        font-size: 14px;
+    }
+}
+/* _content/DentalClinicWebsite/Views/Home/Home.cshtml.rz.scp.css */
+.about-section[b-vo96celdc3] {
+    background-color: #AAE6FF;
+    padding: 50px;
+}
+
+    .about-section h2[b-vo96celdc3] {
+        font-size: 28px;
+        color: #002A7E;
+        margin-bottom: 20px;
+    }
+
+    .about-section p[b-vo96celdc3] {
+        font-size: 18px;
+    }
+
+.guarantee-section[b-vo96celdc3],
+.experience-section[b-vo96celdc3],
+.safety-section[b-vo96celdc3],
+.technology-section[b-vo96celdc3],
+.testimonials-section[b-vo96celdc3],
+.location-section[b-vo96celdc3] {
+    background-color: #AAE6FF;
+    padding: 50px;
+    margin-top: 30px;
+}
+
+    .guarantee-section h2[b-vo96celdc3],
+    .experience-section h2[b-vo96celdc3],
+    .safety-section h2[b-vo96celdc3],
+    .technology-section h2[b-vo96celdc3],
+    .testimonials-section h2[b-vo96celdc3],
+    .location-section h2[b-vo96celdc3] {
+        font-size: 24px;
+        color: #002A7E;
+        margin-bottom: 20px;
+    }
+
+    .guarantee-section p[b-vo96celdc3],
+    .experience-section p[b-vo96celdc3],
+    .safety-section p[b-vo96celdc3],
+    .technology-section p[b-vo96celdc3],
+    .testimonials-section p[b-vo96celdc3],
+    .location-section p[b-vo96celdc3] {
+        font-size: 18px;
+    }
+
+.testimonial-author[b-vo96celdc3] {
+    margin-top: 20px;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .about-section[b-vo96celdc3],
+    .guarantee-section[b-vo96celdc3],
+    .experience-section[b-vo96celdc3],
+    .safety-section[b-vo96celdc3],
+    .technology-section[b-vo96celdc3],
+    .testimonials-section[b-vo96celdc3],
+    .location-section[b-vo96celdc3] {
+        padding: 30px;
+    }
+
+        .about-section h2[b-vo96celdc3],
+        .guarantee-section h2[b-vo96celdc3],
+        .experience-section h2[b-vo96celdc3],
+        .safety-section h2[b-vo96celdc3],
+        .technology-section h2[b-vo96celdc3],
+        .testimonials-section h2[b-vo96celdc3],
+        .location-section h2[b-vo96celdc3] {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .about-section p[b-vo96celdc3],
+        .guarantee-section p[b-vo96celdc3],
+        .experience-section p[b-vo96celdc3],
+        .safety-section p[b-vo96celdc3],
+        .technology-section p[b-vo96celdc3],
+        .testimonials-section p[b-vo96celdc3],
+        .location-section p[b-vo96celdc3] {
+            font-size: 16px;
+        }
+}
+/* _content/DentalClinicWebsite/Views/MySchedules/MySchedules.cshtml.rz.scp.css */
+h1[b-kxzyd2uu88] {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.table[b-kxzyd2uu88] {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.text-dark[b-kxzyd2uu88] {
+    color: #333;
+}
+
+th[b-kxzyd2uu88],
+td[b-kxzyd2uu88] {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th[b-kxzyd2uu88] {
+    font-weight: bold;
+}
+
+tbody tr:nth-child(even)[b-kxzyd2uu88] {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover[b-kxzyd2uu88] {
+    background-color: #f5f5f5;
+}
+
+@media (max-width: 600px) {
+    h1[b-kxzyd2uu88] {
+        font-size: 20px;
+    }
+
+    .table[b-kxzyd2uu88] {
+        font-size: 14px;
+    }
+}
+/* _content/DentalClinicWebsite/Views/Prices/Prices.cshtml.rz.scp.css */
+body[b-9uw7sew7nl] {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #002A7E;
+}
+
+main[b-9uw7sew7nl] {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1[b-9uw7sew7nl] {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+p[b-9uw7sew7nl] {
+    margin-bottom: 20px;
+}
+
+.treatments-section[b-9uw7sew7nl] {
+    margin-top: 30px;
+}
+
+table[b-9uw7sew7nl] {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th[b-9uw7sew7nl],
+td[b-9uw7sew7nl] {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th[b-9uw7sew7nl] {
+    font-weight: bold;
+}
+
+
+@media (max-width: 600px) {
+    main[b-9uw7sew7nl] {
+        padding: 10px;
+    }
+}
+/* _content/DentalClinicWebsite/Views/Schedule/Schedule.cshtml.rz.scp.css */
+.appointment-form[b-9l25omiuzc] {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-group[b-9l25omiuzc] {
+    margin-bottom: 20px;
+}
+
+    .form-group label[b-9l25omiuzc] {
+        display: block;
+        font-size: 18px;
+        font-weight: bold;
+        color: #002A7E;
+        margin-bottom: 10px;
+    }
+
+    .form-group select[b-9l25omiuzc],
+    .form-group input[type="date"][b-9l25omiuzc],
+    .form-group input[type="time"][b-9l25omiuzc] {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+    }
+
+button[type="submit"][b-9l25omiuzc] {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    button[type="submit"]:hover[b-9l25omiuzc] {
+        background-color: #0056b3;
+    }
+/* _content/DentalClinicWebsite/Views/Services/Services.cshtml.rz.scp.css */
+h1[b-m0vm8v8yog] {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+h2[b-m0vm8v8yog] {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #002A7E;
+}
+
+ul[b-m0vm8v8yog] {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li[b-m0vm8v8yog] {
+    margin-bottom: 5px;
+}
+
+h3[b-m0vm8v8yog] {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.specialization[b-m0vm8v8yog] {
+    margin-bottom: 20px;
+}
+
+.service[b-m0vm8v8yog] {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.treatment[b-m0vm8v8yog] {
+    margin-left: 40px;
+}
+/* _content/DentalClinicWebsite/Views/Shared/_Layout.cshtml.rz.scp.css */
+/* Culorile temei */
+:root[b-o2q3kkbzl2] {
+    --primary-color: #D8B3E7; /* Culoarea principală */
+    --secondary-color: #6c757d; /* Culoarea secundară */
+    --background-color: #DDB3F5; /* Culoarea de fundal */
+}
+
+
+.logo[b-o2q3kkbzl2] {
+    width: 30px; /* Ajustează dimensiunea imaginii conform preferințelor tale */
+}
+
+.logo-title[b-o2q3kkbzl2] {
+    display: inline-block;
+    margin-top: 5px;
+}
+
+
+.logo-text[b-o2q3kkbzl2] {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--secondary-color);
 }
 
 .navbar[b-o2q3kkbzl2] {
-    top: 0;
-    right: 0;
-    left: auto;
-    width: 100%;
-    z-index: 999;
+    background-color: var(--primary-color);
+    padding: 20px 0;
+}
+
+.nav-link[b-o2q3kkbzl2] {
+    color: var(--secondary-color) !important;
+}
+
+    .nav-link:hover[b-o2q3kkbzl2] {
+        color: white !important;
+    }
+
+.container[b-o2q3kkbzl2] {
+    margin-top: 20px;
+}
+
+
+.navbar-brand[b-o2q3kkbzl2] {
+    margin-right: 10px;
+}
+
+.navbar-toggler[b-o2q3kkbzl2] {
+    padding: 0.25rem 0.5rem;
 }
 
 .navbar-collapse[b-o2q3kkbzl2] {
-    justify-content: flex-end;
+    margin-top: -5px;
 }
 
-.logo-text h1[b-o2q3kkbzl2] {
-    white-space: nowrap;
+.navbar-nav[b-o2q3kkbzl2] {
+    align-items: center;
 }
 
-a[b-o2q3kkbzl2] {
-  color: #0077cc;
+.nav-link[b-o2q3kkbzl2] {
+    padding: 0.5rem;
+    font-size: 14px;
 }
 
-.btn-primary[b-o2q3kkbzl2] {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+body[b-o2q3kkbzl2] {
+    background: linear-gradient(135deg, #B2EBF2, #E0F7FA);
 }
 
-.nav-pills .nav-link.active[b-o2q3kkbzl2], .nav-pills .show > .nav-link[b-o2q3kkbzl2] {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+/* _content/DentalClinicWebsite/Views/Team/Team.cshtml.rz.scp.css */
+h1[b-ijzez4v4y6] {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
-.border-top[b-o2q3kkbzl2] {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom[b-o2q3kkbzl2] {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow[b-o2q3kkbzl2] {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+.team-container[b-ijzez4v4y6] {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-button.accept-policy[b-o2q3kkbzl2] {
-  font-size: 1rem;
-  line-height: inherit;
+.team-member[b-ijzez4v4y6] {
+    text-align: center;
+    margin: 20px;
 }
 
-.footer[b-o2q3kkbzl2] {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
-}
+    .team-member img[b-ijzez4v4y6] {
+        width: 200px;
+        height: auto;
+        border-radius: 50%;
+    }
+
+    .team-member h3[b-ijzez4v4y6] {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+
+    .team-member p[b-ijzez4v4y6] {
+        font-size: 14px;
+        margin-top: 5px;
+    }

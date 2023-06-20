@@ -52,6 +52,14 @@ namespace DentalClinicWebsite.Areas.Identity.Pages.Account.Manage
         /// </summary>
         public class InputModel
         {
+            [Display(Name = "First Name")]
+            public string FirstName { get; set; }
+
+            [Display(Name = "Last Name")]
+            public string LastName { get; set; }
+
+            [Display(Name = "Address")]
+            public string Address { get; set; }
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
@@ -77,6 +85,9 @@ namespace DentalClinicWebsite.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Address = user.Address,
                 PhoneNumber = phoneNumber,
                 ProfilePicture = user.Picture // Assuming the User class has a property called ProfilePicture to store the profile picture URL
             };
@@ -119,11 +130,27 @@ namespace DentalClinicWebsite.Areas.Identity.Pages.Account.Manage
                 }
             }
 
-            user.Picture = Input.ProfilePicture;
-            var setPictureProfile = await _userManager.UpdateAsync(user);
-            if (!setPictureProfile.Succeeded)
+            if (user.FirstName != Input.FirstName)
             {
-                StatusMessage = "Unexpected error when trying to set picture profile.";
+                user.FirstName = Input.FirstName;
+            }
+
+            if (user.LastName != Input.LastName)
+            {
+                user.LastName = Input.LastName;
+            }
+
+            if (user.Address != Input.Address)
+            {
+                user.Address = Input.Address;
+            }
+
+            user.Picture = Input.ProfilePicture;
+
+            var setResult = await _userManager.UpdateAsync(user);
+            if (!setResult.Succeeded)
+            {
+                StatusMessage = "Unexpected error when trying to update user details.";
                 return RedirectToPage();
             }
 

@@ -7,7 +7,6 @@
         public decimal Price { get; set; }
         public DateTime CalendarData { get; set; }
         public string Details { get; set; }
-
         public virtual Consultation Consultation { get; set; }
     }
 }

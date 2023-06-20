@@ -11,9 +11,8 @@
 <body>
     <header>
         <div class="logo-text">
-            <img src="/img/logo1.png" alt="Logo SmileDent" style="display: inline-block;" class="logo" />
-            <h1>Bine ati venit la SmileDent</h1>
-            <p style="white-space: nowrap;">Imbunatatim zambete</p>
+            <img src="/img/logo3.png" alt="Logo SmileDent" style="display: inline-block;" class="logo" />
+            <h1 class="logo-title">SmileDent</h1>
         </div>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm">
             <div class="container-fluid">
@@ -41,6 +40,18 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Prices" asp-action="Prices">Tarife</a>
                         </li>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Admin">Admin</a>
+                            </li>                  
+                        }
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Dentist") || User.IsInRole("User"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="MySchedules" asp-action="MySchedules">Programarile Mele</a>
+                            </li>
+                        }
                     </ul>
                     @if (TempData["Message"] != null)
                     {

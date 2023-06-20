@@ -1,0 +1,50 @@
+body[b-9uw7sew7nl] {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #002A7E;
+}
+
+main[b-9uw7sew7nl] {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1[b-9uw7sew7nl] {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+p[b-9uw7sew7nl] {
+    margin-bottom: 20px;
+}
+
+.treatments-section[b-9uw7sew7nl] {
+    margin-top: 30px;
+}
+
+table[b-9uw7sew7nl] {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th[b-9uw7sew7nl],
+td[b-9uw7sew7nl] {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th[b-9uw7sew7nl] {
+    font-weight: bold;
+}
+
+
+@media (max-width: 600px) {
+    main[b-9uw7sew7nl] {
+        padding: 10px;
+    }
+}

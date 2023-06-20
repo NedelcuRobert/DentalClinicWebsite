@@ -1,0 +1,246 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using DentalClinicWebsite.Models.DTOs
+
+@inject UserManager<User> UserManager
+@inject RoleManager<IdentityRole> RoleManager
+
+
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<link rel="stylesheet" href="css/site.css">
+
+<h1>Admin</h1>
+
+<h2>Users</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in await Model.Users)
+        {
+            var currentRole = await UserManager.GetRolesAsync(user);
+            <tr data-user-id="@user.Id">
+                <td>
+                    <input type="text" name="UserName" class="form-control custom-field" value="@user.UserName" />
+                </td>
+                <td>
+                    <input type="email" name="Email" class="form-control custom-field" value="@user.Email" />
+                </td>
+                <td>
+                    <select name="Role" class="form-control custom-field">
+                        @foreach (var role in RoleManager.Roles.Select(r => r.Name))
+                        {
+                            <option value="@role" selected="@(currentRole.Contains(role))">@role</option>
+                        }
+                    </select>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <button class="btn btn-primary" onclick="editUser('@user.Id')">Save</button>
+                    <button class="btn btn-danger" onclick="deleteUser('@user.Id')">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>Services</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var service in Model.Services)
+        {
+            <tr data-service-id="@service.ID">
+                <td>
+                    <input type="text" name="ServiceName" class="form-control custom-field" value="@service.Name" />
+                </td>
+                <td>
+                    <button class="btn btn-primary" onclick="editService('@service.ID')">Save</button>
+                    <button class="btn btn-danger" onclick="deleteService('@service.ID')">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>Treatments</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var treatment in Model.Treatments)
+        {
+            <tr data-treatment-id="@treatment.ID">
+                <td>
+                    <input type="text" name="TreatmentName" class="form-control custom-field" value="@treatment.Name" />
+                </td>
+                <td>
+                    <input type="text" name="Description" class="form-control custom-field" value="@treatment.Description" />
+                </td>
+                <td>
+                    <input type="number" name="Price" class="form-control custom-field" value="@treatment.Price" />
+                </td>
+                <td>
+                    <button class="btn btn-primary" onclick="editTreatment('@treatment.ID')">Save</button>
+                    <button class="btn btn-danger" onclick="deleteTreatment('@treatment.ID')">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    function editUser(userId) {
+        var userName = $(`tr[data-user-id='${userId}'] input[name=UserName]`).val();
+        var email = $(`tr[data-user-id='${userId}'] input[name=Email]`).val();
+        var role = $(`tr[data-user-id='${userId}'] select[name=Role]`).val();
+
+        // Efectuați o cerere AJAX către metoda de editare din controller
+        $.ajax({
+            url: '/Admin/EditUser',
+            type: 'POST',
+            data: {
+                id: userId,
+                userName: userName,
+                email: email,
+                role: role
+            },
+            success: function (result) {
+                // Actualizați doar rândul corespunzător utilizatorului editat, fără a reîncărca întreaga pagină
+                $(`tr[data-user-id='${userId}'] td:nth-child(1)`).text(userName);
+                $(`tr[data-user-id='${userId}'] td:nth-child(2)`).text(email);
+                $(`tr[data-user-id='${userId}'] td:nth-child(3)`).text(role); // Adăugați această linie pentru a actualiza afișarea rolului
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+
+    function deleteUser(userId) {
+        // Efectuați o cerere AJAX către metoda de ștergere din controller
+        $.ajax({
+            url: '/Admin/DeleteUser',
+            type: 'POST',
+            data: {
+                id: userId
+            },
+            success: function (result) {
+                // Eliminați rândul corespunzător utilizatorului șters, fără a reîncărca întreaga pagină
+                $(`tr[data-user-id='${userId}']`).remove();
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+
+    function editService(serviceId) {
+        var serviceName = $(`tr[data-service-id='${serviceId}'] input[name=ServiceName]`).val();
+
+        // Efectuați o cerere AJAX către metoda de editare a serviciului din controller
+        $.ajax({
+            url: '/Admin/EditService',
+            type: 'POST',
+            data: {
+                id: serviceId,
+                name: serviceName
+            },
+            success: function (result) {
+                // Actualizați doar rândul corespunzător serviciului editat, fără a reîncărca întreaga pagină
+                $(`tr[data-service-id='${serviceId}'] td:nth-child(1)`).text(serviceName);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+
+    function deleteService(serviceId) {
+        // Efectuați o cerere AJAX către metoda de ștergere a serviciului din controller
+        $.ajax({
+            url: '/Admin/DeleteService',
+            type: 'POST',
+            data: {
+                id: serviceId
+            },
+            success: function (result) {
+                // Eliminați rândul corespunzător serviciului șters, fără a reîncărca întreaga pagină
+                $(`tr[data-service-id='${serviceId}']`).remove();
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+
+    function editTreatment(treatmentId) {
+        var treatmentName = $(`tr[data-treatment-id='${treatmentId}'] input[name=TreatmentName]`).val();
+        var description = $(`tr[data-treatment-id='${treatmentId}'] input[name=Description]`).val();
+        var price = $(`tr[data-treatment-id='${treatmentId}'] input[name=Price]`).val();
+
+        // Efectuați o cerere AJAX către metoda de editare a tratamentului din controller
+        $.ajax({
+            url: '/Admin/EditTreatment',
+            type: 'POST',
+            data: {
+                id: treatmentId,
+                name: treatmentName,
+                description: description,
+                price: price
+            },
+            success: function (result) {
+                // Actualizați doar rândul corespunzător tratamentului editat, fără a reîncărca întreaga pagină
+                $(`tr[data-treatment-id='${treatmentId}'] td:nth-child(1)`).text(treatmentName);
+                $(`tr[data-treatment-id='${treatmentId}'] td:nth-child(2)`).text(description);
+                $(`tr[data-treatment-id='${treatmentId}'] td:nth-child(3)`).text(price);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+
+    function deleteTreatment(treatmentId) {
+        // Efectuați o cerere AJAX către metoda de ștergere a tratamentului din controller
+        $.ajax({
+            url: '/Admin/DeleteTreatment',
+            type: 'POST',
+            data: {
+                id: treatmentId
+            },
+            success: function (result) {
+                // Eliminați rândul corespunzător tratamentului șters, fără a reîncărca întreaga pagină
+                $(`tr[data-treatment-id='${treatmentId}']`).remove();
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+</script>

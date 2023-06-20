@@ -1,0 +1,40 @@
+﻿@model List<Appointment>
+
+<h1>Programarile Mele</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th class="text-dark">Serviciu</th>
+            <th class="text-dark">Data</th>
+            <th class="text-dark">Ora</th>
+            @if (User.IsInRole("Dentist"))
+            {
+                <th class="text-dark">Nume Pacient</th>
+            }
+            @if (User.IsInRole("User"))
+            {
+                <th class="text-dark">Nume Dentist</th>
+            }
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var appointment in Model)
+        {
+            <tr>
+                <td>@appointment.Service.Name</td>
+                <td>@appointment.CalendarData.ToShortDateString()</td>
+                <td>@appointment.CalendarData.ToLocalTime()</td>
+                @if (User.IsInRole("Dentist"))
+                {
+                    <td>@appointment.User.FirstName @appointment.User.LastName</td>
+                }
+                @if (User.IsInRole("User"))
+                {
+                    <td>@appointment.Dentist.FirstName @appointment.Dentist.LastName</td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

@@ -7,26 +7,34 @@ namespace DentalClinicWebsite.Repository
     public class ServiceRepository : IServiceRepository
     {
         private readonly DentalClinicContext _context;
+        private readonly DbContextOptions<DentalClinicContext> _contextOptions;
 
-        public ServiceRepository(DentalClinicContext context)
+
+        public ServiceRepository(DentalClinicContext context, DbContextOptions<DentalClinicContext> contextOptions)
         {
             _context = context;
+            _contextOptions = contextOptions;
         }
 
-        public async Task<IEnumerable<Service>> GetAllServicesAsync()
+        public IEnumerable<Service> GetAllServices()
         {
-            return await _context.Services.Include(s => s.Specialization)
-                                            .Include(s => s.Treatments)
-                                            .Include(s => s.Appointments)
-                                            .ToListAsync();
+            using var context = new DentalClinicContext(_contextOptions);
+            return context.Services.Include(s => s.Specialization).ToList();
         }
 
-        public async Task<Service> GetServiceByIdAsync(int id)
+        public IEnumerable<Service> GetServicesBySpecialization(int specializationId)
         {
-            return await _context.Services.Include(s => s.Specialization)
-                                            .Include(s => s.Treatments)
-                                            .Include(s => s.Appointments)
-                                            .FirstOrDefaultAsync(s => s.ID == id);
+            var services = _context.Services
+                .Include(s => s.Treatments)
+                .Where(s => s.SpecializationId == specializationId)
+                .ToList();
+
+            return services;
+        }
+
+        public Service GetServiceById(int id)
+        {
+            return _context.Services.Find(id);
         }
 
         public async Task AddServiceAsync(Service service)

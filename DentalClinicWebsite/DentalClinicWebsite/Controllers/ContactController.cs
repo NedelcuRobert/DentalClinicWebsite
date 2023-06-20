@@ -18,7 +18,6 @@ namespace DentalClinicWebsite.Controllers
         _config = config;
     }
 
-        [Authorize(Roles = "User")]
         public ActionResult Contact()
         {
 

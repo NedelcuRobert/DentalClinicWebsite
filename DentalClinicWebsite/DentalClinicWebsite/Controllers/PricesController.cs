@@ -1,20 +1,23 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using DentalClinicWebsite.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DentalClinicWebsite.Controllers
 {
     public class PricesController : Controller
     {
-        public PricesController()
+        private readonly ITreatmentService _treatmentService;
+        public PricesController(ITreatmentService treatmentService)
         {
+            _treatmentService = treatmentService;
         }
+
         [AllowAnonymous]
-        public ActionResult Prices()
+        public IActionResult Prices()
         {
+            var treatments = _treatmentService.GetAllTreatments();
 
-            // Pass the list of appointments to the view
-            return View();
+            return View(treatments);
         }
-
     }
 }

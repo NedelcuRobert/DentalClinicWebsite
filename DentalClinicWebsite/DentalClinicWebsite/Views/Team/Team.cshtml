@@ -1,97 +1,15 @@
-﻿@using System.Security.Claims
-@inject IHttpContextAccessor HttpContextAccessor
-@model Review
-@{
-    Layout = "_Layout";
-}
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Echipa-SmileDent</title>
-    <link rel="stylesheet" href="css/site.css" />
-</head>
-	<main>
-		<section id="echipa" class="banner">
-			<div class="content">
-				<h1>Echipa noastră</h1>
-				<p>Aici poți găsi o prezentare a echipei noastre de specialiști în stomatologie.</p>
-			</div>
-		</section>
-        <section class="cards">
-            <div class="card">
-                <img src="/img/dr-alexa.jpg" alt="Dr. Alexa" class="imgdr">
-                <h2>Dr. Alexa Dumbrava</h2>
-                <p>Medic stomatolog cu experiență de 10 ani.</p>
-                <h3>Review-uri:</h3>
-                <ul>
-                        <li>Rating</li>
-                        <li>Comment</li>
-                </ul>
-                @if (HttpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
-                {
-                    <form method="post" asp-controller="Review" asp-action="Create">
-                        <input type="hidden" name="Medic" value="Dr. Alexa Dumbrava" />
-                        <input type="hidden" name="UserId" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" />
-                        <label for="rating">Rating:</label>
-                        <input type="number" name="Rating" min="1" max="5" required />
-                        <br />
-                        <label for="text">Comment:</label>
-                        <textarea name="Text" required></textarea>
-                        <button type="submit">Adauga review</button>
-                    </form>
-                }
-            </div>
-            <div class="card">
-                <img src="/img/dr-florin-mitache.jpg" alt="Dr. Florin" class="imgdr">
-                <h2>Dr. Florin Mitrache</h2>
-                <p>Medic stomatolog cu experiență de 8 ani.</p>
-                <h3>Review-uri:</h3>
-                <ul>
-                        <li>Rating</li>
-                        <li>Comment</li>
-                </ul>
-                @if (HttpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
-                {
-                    <form method="post" asp-controller="Review" asp-action="Create">
-                        <input type="hidden" name="Medic" value="Dr. Florin Mitrache" />
-                        <input type="hidden" name="UserId" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" />
-                        <label for="rating">Rating:</label>
-                        <input type="number" name="Rating" min="1" max="5" required />
-                        <br />
-                        <label for="text">Comment:</label>
-                        <textarea name="Text" required></textarea>
-                        <button type="submit">Adauga review</button>
-                    </form>
-                }
-            </div>
-            <div class="card">
-                <img src="/img/dr-marius.jpg" alt="Dr. Marius" class="imgdr">
-                <h2>Dr. Marius Popescu</h2>
-                <p>Medic stomatolog cu experiență de 5 ani.</p>
-                <h3>Review-uri:</h3>
-                <ul>
-                        <li>Rating</li>
-                        <li>Comment</li>
-                </ul>
-                @if (HttpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
-                {
-                    <form method="post" asp-controller="Review" asp-action="Create">
-                        <input type="hidden" name="Medic" value="Dr. Marius Popescu" />
-                        <input type="hidden" name="UserId" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" />
-                        <label for="rating">Rating:</label>
-                        <input type="number" name="Rating" min="1" max="5" required />
-                        <br />
-                        <label for="text">Comment:</label>
-                        <textarea name="Text" required></textarea>
-                        <button type="submit">Adauga review</button>
-                    </form>
-                }
-            </div>
-        </section>
-	</main>
-	<footer>
-		<p>© 2023 SmileDent. Toate drepturile rezervate.</p>
-	</footer>
-</html>
+﻿@model IEnumerable<User>
+
+
+<h1>Echipa noastră</h1>
+
+<div class="team-container">
+    @foreach (var dentist in Model)
+    {
+        <div class="team-member">
+            <img src="@dentist.Picture" alt="@dentist.FirstName @dentist.LastName" style="width: 200px; height: auto;" />
+            <h3>@dentist.FirstName @dentist.LastName</h3>
+            <p>@string.Join(", ", ViewBag.Specializations[dentist.Id] as IEnumerable<string>)</p>
+        </div>
+    }
+</div>

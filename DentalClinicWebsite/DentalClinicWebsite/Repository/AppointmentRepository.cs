@@ -2,8 +2,6 @@
 using DentalClinicWebsite.Repository.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System.Data.Entity;
-using System.Diagnostics;
 
 namespace DentalClinicWebsite.Repository
 {
@@ -11,13 +9,11 @@ namespace DentalClinicWebsite.Repository
     {
         private readonly DentalClinicContext _context;
         private readonly UserManager<User> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AppointmentRepository(DentalClinicContext context, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
+        public AppointmentRepository(DentalClinicContext context, UserManager<User> userManager)
         {
             _context = context;
             _userManager = userManager;
-            _roleManager = roleManager;
         }
         public IEnumerable<Service> GetServices(int specializationId)
         {
@@ -29,12 +25,9 @@ namespace DentalClinicWebsite.Repository
 
         public IEnumerable<User> GetDentists(int specializationId)
         {
-            var userIds = _userManager.GetUsersInRoleAsync("Admin").GetAwaiter().GetResult()
-                .Select(u => u.Id).ToList();
 
-            return _context.Set<User>()
-                .Where(u => userIds.Contains(u.Id) && u.UserSpecializations.Any(us => us.ID == specializationId))
-                .ToList();
+            return _context.Users.Where(u => u.UserSpecializations.Any(us => us.SpecializationId == specializationId))
+                    .ToList();
         }
 
         public async Task<IEnumerable<Appointment>> GetAvailableAppointmentsAsync(int serviceId, string dentistId)
@@ -54,6 +47,30 @@ namespace DentalClinicWebsite.Repository
         {
             return _context.Set<Specialization>();
         }
-    }
 
+        public IEnumerable<Appointment> GetAppointmentsById(string id)
+        {
+            var user = _userManager.FindByIdAsync(id).Result;
+            var roles = _userManager.GetRolesAsync(user).Result;
+
+            if (roles.Contains("Dentist"))
+            {
+                return _context.Appointments
+                    .Include(a => a.User)
+                    .Include(a => a.Dentist)
+                    .Include(a => a.Service)
+                    .Where(a => a.DentistId == id)
+                    .ToList();
+            }
+            else
+            {
+                return _context.Appointments
+                    .Include(a => a.User)
+                    .Include(a => a.Dentist)
+                    .Include(a => a.Service)
+                    .Where(a => a.UserId == id)
+                    .ToList();
+            }
+        }
+    }
 }

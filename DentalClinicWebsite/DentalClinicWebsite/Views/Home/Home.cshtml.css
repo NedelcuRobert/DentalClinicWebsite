@@ -1,0 +1,83 @@
+﻿.about-section {
+    background-color: #AAE6FF;
+    padding: 50px;
+}
+
+    .about-section h2 {
+        font-size: 28px;
+        color: #002A7E;
+        margin-bottom: 20px;
+    }
+
+    .about-section p {
+        font-size: 18px;
+    }
+
+.guarantee-section,
+.experience-section,
+.safety-section,
+.technology-section,
+.testimonials-section,
+.location-section {
+    background-color: #AAE6FF;
+    padding: 50px;
+    margin-top: 30px;
+}
+
+    .guarantee-section h2,
+    .experience-section h2,
+    .safety-section h2,
+    .technology-section h2,
+    .testimonials-section h2,
+    .location-section h2 {
+        font-size: 24px;
+        color: #002A7E;
+        margin-bottom: 20px;
+    }
+
+    .guarantee-section p,
+    .experience-section p,
+    .safety-section p,
+    .technology-section p,
+    .testimonials-section p,
+    .location-section p {
+        font-size: 18px;
+    }
+
+.testimonial-author {
+    margin-top: 20px;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .about-section,
+    .guarantee-section,
+    .experience-section,
+    .safety-section,
+    .technology-section,
+    .testimonials-section,
+    .location-section {
+        padding: 30px;
+    }
+
+        .about-section h2,
+        .guarantee-section h2,
+        .experience-section h2,
+        .safety-section h2,
+        .technology-section h2,
+        .testimonials-section h2,
+        .location-section h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .about-section p,
+        .guarantee-section p,
+        .experience-section p,
+        .safety-section p,
+        .technology-section p,
+        .testimonials-section p,
+        .location-section p {
+            font-size: 16px;
+        }
+}

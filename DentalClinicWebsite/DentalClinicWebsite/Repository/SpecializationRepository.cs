@@ -12,15 +12,25 @@ namespace DentalClinicWebsite.Repository
         {
             _context = context;
         }
+        public async Task<IEnumerable<string>> GetSpecializationsForDentist(string dentistId)
+        {
+            var specializations = await _context.UserSpecializations
+                .Where(us => us.UserId == dentistId)
+                .Select(us => us.Specialization.Name)
+                .ToListAsync();
+
+            return specializations;
+        }
 
         public async Task<Specialization> GetByIdAsync(int id)
         {
             return await _context.Specializations.FindAsync(id);
         }
 
-        public async Task<IEnumerable<Specialization>> GetAllAsync()
+        public IEnumerable<Specialization> GetAllSpecializations()
         {
-            return await _context.Specializations.ToListAsync();
+            var specializations = _context.Specializations.Include(s => s.Services).ToList();
+            return specializations;
         }
 
         public async Task AddAsync(Specialization specialization)

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DentalClinicWebsite.Controllers
 {
-    [Authorize] // doar utilizatorii autentificați pot accesa ReviewController
+    [Authorize] 
     public class ReviewController : Controller
     {
         private readonly IReviewService _reviewService;
@@ -21,7 +21,7 @@ namespace DentalClinicWebsite.Controllers
             if (ModelState.IsValid)
             {
                 _reviewService.AddReview(review);
-                return RedirectToAction("", "Team"); // sau orice altă acțiune dorită
+                return RedirectToAction("", "Team");
             }
             return BadRequest();
         }

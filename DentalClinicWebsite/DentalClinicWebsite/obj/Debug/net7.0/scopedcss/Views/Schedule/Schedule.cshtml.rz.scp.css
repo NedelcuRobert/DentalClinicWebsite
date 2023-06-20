@@ -1,0 +1,40 @@
+.appointment-form[b-9l25omiuzc] {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-group[b-9l25omiuzc] {
+    margin-bottom: 20px;
+}
+
+    .form-group label[b-9l25omiuzc] {
+        display: block;
+        font-size: 18px;
+        font-weight: bold;
+        color: #002A7E;
+        margin-bottom: 10px;
+    }
+
+    .form-group select[b-9l25omiuzc],
+    .form-group input[type="date"][b-9l25omiuzc],
+    .form-group input[type="time"][b-9l25omiuzc] {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+    }
+
+button[type="submit"][b-9l25omiuzc] {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    button[type="submit"]:hover[b-9l25omiuzc] {
+        background-color: #0056b3;
+    }

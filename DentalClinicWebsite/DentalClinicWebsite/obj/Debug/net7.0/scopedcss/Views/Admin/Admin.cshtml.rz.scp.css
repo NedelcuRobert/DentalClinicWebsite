@@ -1,0 +1,63 @@
+h1[b-g2r1cz7npl] {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+h2[b-g2r1cz7npl] {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.table[b-g2r1cz7npl] {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+    .table th[b-g2r1cz7npl],
+    .table td[b-g2r1cz7npl] {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .table th[b-g2r1cz7npl] {
+        font-weight: bold;
+    }
+
+    .table input[type="text"][b-g2r1cz7npl],
+    .table input[type="email"][b-g2r1cz7npl],
+    .table input[type="number"][b-g2r1cz7npl],
+    .table select[b-g2r1cz7npl] {
+        width: 100%;
+        padding: 6px 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .table button[b-g2r1cz7npl] {
+        padding: 6px 10px;
+        margin-right: 5px;
+    }
+
+.btn-primary[b-g2r1cz7npl] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+}
+
+.btn-danger[b-g2r1cz7npl] {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+}
+
+    .btn-primary:hover[b-g2r1cz7npl],
+    .btn-danger:hover[b-g2r1cz7npl] {
+        opacity: 0.8;
+        cursor: pointer;
+    }

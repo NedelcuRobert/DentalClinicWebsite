@@ -2,6 +2,7 @@
 using DentalClinicWebsite.Models.DTOs;
 using DentalClinicWebsite.Repository.Interfaces;
 using DentalClinicWebsite.Services.Interfaces;
+using Microsoft.AspNetCore.Identity;
 
 namespace DentalClinicWebsite.Services
 {
@@ -43,6 +44,12 @@ namespace DentalClinicWebsite.Services
         public IEnumerable<Specialization> GetSpecializations()
         {
             return _appointmentRepository.GetSpecializations();
+        }
+
+        public IEnumerable<Appointment> GetAppointmentsById(string Id)
+        {
+            var appointments =  _appointmentRepository.GetAppointmentsById(Id);
+            return appointments;
         }
     }
 }

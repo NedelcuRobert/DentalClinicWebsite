@@ -9,5 +9,6 @@ namespace DentalClinicWebsite.Repository.Interfaces
         Task<IEnumerable<Appointment>> GetAvailableAppointmentsAsync(int serviceId, string dentistId);
         Task CreateAppointmentAsync(Appointment appointment);
         IEnumerable<Specialization> GetSpecializations();
+        IEnumerable<Appointment> GetAppointmentsById(string Id);
     }
 }

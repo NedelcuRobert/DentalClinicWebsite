@@ -4,12 +4,11 @@ namespace DentalClinicWebsite.Repository.Interfaces
 {
     public interface IUserSpecializationRepository
     {
-        Task<List<UserSpecialization>> GetAllAsync();
-        Task<UserSpecialization> GetByIdAsync(int id);
-        Task<List<UserSpecialization>> GetByUserIdAsync(string userId);
-        Task<List<UserSpecialization>> GetBySpecializationIdAsync(int specializationId);
-        Task<UserSpecialization> AddAsync(UserSpecialization userSpecialization);
-        Task<UserSpecialization> UpdateAsync(UserSpecialization userSpecialization);
-        Task DeleteAsync(UserSpecialization userSpecialization);
+        Task<UserSpecialization> GetUserSpecializationByIdAsync(int id);
+        Task<List<UserSpecialization>> GetUserSpecializationsByUserIdAsync(string userId);
+        Task AddUserSpecializationAsync(UserSpecialization userSpecialization);
+        Task UpdateUserSpecializationAsync(UserSpecialization userSpecialization);
+        Task RemoveUserSpecializationAsync(UserSpecialization userSpecialization);
+
     }
 }

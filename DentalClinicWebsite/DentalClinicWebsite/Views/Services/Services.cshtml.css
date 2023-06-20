@@ -1,0 +1,43 @@
+﻿h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #002A7E;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.specialization {
+    margin-bottom: 20px;
+}
+
+.service {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.treatment {
+    margin-left: 40px;
+}
