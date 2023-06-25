@@ -47,11 +47,6 @@ namespace DentalClinicWebsite.Models
                     .HasForeignKey(s => s.ServiceId)
                     .OnDelete(DeleteBehavior.ClientNoAction);
 
-                entity
-                    .HasOne<Consultation>(s => s.Consultation)
-                    .WithOne(c => c.Appointment)
-                    .HasForeignKey<Consultation>(s => s.AppointmentId)
-                    .OnDelete(DeleteBehavior.ClientNoAction);
             });
 
             modelBuilder.Entity<Billing>()
